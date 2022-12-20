@@ -1,12 +1,21 @@
 import React, { useRef, useState } from "react";
 import { withTranslation } from "react-i18next";
 import Page from "../../components/Page";
+import { Modal } from "@mantine/core";
 import "./styles.scss";
 
 const ApplyOnline = () => {
+  const [opened, setOpened] = useState(true);
   return (
     <Page meta="PISES">
       <div style={{ margin: "auto", width: "400px" }}>
+        <Modal
+          opened={opened}
+          onClose={() => setOpened(false)}
+          style={{ marginTop:'10%'}}
+        >
+          Please fill the form to apply. We will contact you within 30 minutes.
+        </Modal>
         <h1 className="top">Apply Online here</h1>
         <div
           style={{

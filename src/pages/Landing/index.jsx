@@ -19,6 +19,7 @@ import { Loader } from "@mantine/core";
 const Landing = () => {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
   const [cars, setCars] = useState({});
+  const [searchh, setSearchh] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -58,40 +59,36 @@ const Landing = () => {
             type="text"
             placeholder="Search Make, Model or keyword"
             style={{ width: "100%", border: "none" }}
+            onChange={(v) => setSearchh(v.target.value)}
           />
           <Button
-            onClick={() => navigate("/inventory")}
+            onClick={() => navigate(`/inventory/${searchh}`)}
             title={"GO"}
             primary={true}
           />
         </div>
         <div className="carss">
           <div className="cars">
-            <MiniCard title="Trucks" icon="trucks" />
+            <MiniCard title="Truck" icon="trucks" />
             <MiniCard
-              //   click="$router.push('inventory')"
               title="Hatchbacks"
               icon="hatchbacks"
             />
             <MiniCard
-              //   click="$router.push('inventory')"
               title="Sedans"
               icon="sedan"
             />
           </div>
           <div className="cars">
             <MiniCard
-              //   click="$router.push('inventory')"
-              title="Coupes"
+              title="Coupe"
               icon="coupe"
             />
             <MiniCard
-              //   click="$router.push('inventory')"
-              title="Electrics"
+              title="Electric"
               icon="ev"
             />
             <MiniCard
-              //   click="$router.push('inventory')"
               title="SUVs"
               icon="suv"
             />

@@ -3,6 +3,7 @@ const routeNames = {
     landing: "/",
     dashboard: "/dashboard",
     inventory: "/inventory",
+    inventory2: "/inventory/:filter",
     viewCar: "/viewCar/:vehicleId",
     apply: "/apply",
     aboutUs: "/aboutus",

@@ -52,14 +52,15 @@ const ViewCar = ({}) => {
             onMouseEnter={autoplay.current.stop}
             onMouseLeave={autoplay.current.reset}
             loop
-            slideSize="40%"
+            height="50%"
+            slideSize="33.333333%"
             slidesToScroll={1}
-            height={450}
+            // height={450}
           >
             {car.assets.length > 0 ? (
               car.assets.map((obj, ind) => (
                 <Carousel.Slide key={ind} className="m-2">
-                  <img src={obj.asset} style={{ width: "50vw" }} />
+                  <img src={obj.asset} style={{ width: "100%" }} />
                 </Carousel.Slide>
               ))
             ) : (

@@ -11,10 +11,10 @@
       border-bottom: 1.5px solid $grey;
 
       .navbar-collapse {
-         height: 100%;
+         height: 80%;
 
          .navbar-nav {
-            height: 100%;
+            height: 50%;
             margin-left: auto;
 
             .nav-link {
@@ -58,9 +58,12 @@
          background-color: white;
          display: flex;
          gap: 5%;
-         height: 180px !important;
+         height: 250px !important;
          width: 500vw !important;
          display: flex;
+      }
+      .buttonss{
+         display: none !important;
       }
    }
 }

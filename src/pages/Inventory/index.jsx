@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import { withTranslation } from "react-i18next";
 import Button from "../../components/Button";
 import Page from "../../components/Page";
-import search from "../../assets/search.svg";
+import searchh from "../../assets/search.svg";
 import { Pagination } from "@mantine/core";
 import "./styles.scss";
 import InputField from "../../components/InputField";
 import DropDown from "../../components/DropDown";
 import { Checkbox, Loader } from "@mantine/core";
 import InventoryCard from "../../components/InventoryCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Inventory = () => {
   const navigate = useNavigate();
+  const params = useParams();
 
+  const [search, setSearch] = useState("");
   const [type, setType] = useState("");
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
@@ -32,19 +34,35 @@ const Inventory = () => {
     hybrid: false,
   });
   useEffect(() => {
-    const options = {
-      method: "GET",
-    };
+    if (params.filter) {
+      const options = {
+        method: "GET",
+      };
 
-    fetch(
-      `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=${page}`,
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        setCars((cars) => response.data.vehicles);
-      })
-      .catch((err) => console.error(err));
+      fetch(
+        `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=${page}&vehicleType=${params.filter.toLocaleLowerCase()}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          setCars((cars) => response.data.vehicles);
+        })
+        .catch((err) => console.error(err));
+    } else {
+      const options = {
+        method: "GET",
+      };
+
+      fetch(
+        `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=${page}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          setCars((cars) => response.data.vehicles);
+        })
+        .catch((err) => console.error(err));
+    }
   }, [page]);
 
   //for pagination
@@ -83,7 +101,18 @@ const Inventory = () => {
   };
   console.log("page", page);
   const applySearch = () => {
-    navigate("/inventory");
+    const options = {
+      method: "GET",
+    };
+    fetch(
+      `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1&search=${search}`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        setCars((cars) => response.data.vehicles);
+      })
+      .catch((err) => console.error(err));
   };
   console.log("cars", count);
   return (
@@ -103,10 +132,11 @@ const Inventory = () => {
           FIND YOUR SOUL RIDE
         </h1>
         <div className="search">
-          <img src={search} style={{ width: "25px" }} />
+          <img src={searchh} style={{ width: "25px" }} />
           <input
             type="text"
             placeholder="Search Make, Model or keyword"
+            onChange={(v) => setSearch(v.target.value)}
             style={{ width: "100vw", border: "none" }}
           />
           <Button onClick={applySearch} title={"GO"} primary={true} />

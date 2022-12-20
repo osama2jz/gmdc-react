@@ -1,5 +1,8 @@
 @import "../../styles/theme.scss";
 
+.desp{
+  width: 50% !important;
+}
 @media only screen and (max-width: 600px) {
   .foot {
     width: 100% !important;
@@ -8,5 +11,8 @@
   }
   .topp {
     margin-left: 5px !important;
+  }
+  .desp{
+    width: 90% !important;
   }
 }

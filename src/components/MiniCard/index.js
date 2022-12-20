@@ -9,7 +9,7 @@ const MiniCard = ({ title, icon }) => {
 
   return (
     <div
-      onClick={() => navigate("/inventory")}
+      onClick={() => navigate(`/inventory/${title}`)}
       className="d-flex p-2 rounded-pill justify-content-around align-items-flex-end text-white hoverr"
       style={{
         backgroundColor: "rgb(0, 97, 158)",

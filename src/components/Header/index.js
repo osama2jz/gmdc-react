@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { withTranslation } from "react-i18next";
 import { useScrollDirection } from "../../hooks";
 import routeNames from "../../routes/routeNames";
+import Button from "../Button";
 // import logo from "../../assets/logo.svg";
 
 import "./styles.scss";
@@ -14,8 +15,8 @@ const Header = ({ t }) => {
     <div className="header">
       <div>
         <nav
-          className="navbar navbar-2 navbar-expand-md"
-          style={{ height: show ? "300px" : "70px" }}
+          className="navbar navbar-2 navbar-expand-md d-flex"
+          style={{ height: show ? "300px" : "70px", justifyContent:'between' }}
         >
           <a className="navbar-brand" href="/">
             GMDC
@@ -65,9 +66,13 @@ const Header = ({ t }) => {
                 </a>
               </li>
             </ul>
+            <div className="d-flex flex-column gap-2">
+            <Button title={"Signin"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/'}/>
+            <Button title={"Signup"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/signup'}/>
           </div>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav mr-auto">
+          </div>
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav m-auto">
               <li className="nav-item">
                 <a className="nav-link" href={routeNames.general.landing}>
                   Home
@@ -98,6 +103,11 @@ const Header = ({ t }) => {
                 </a>
               </li>
             </ul>
+          </div>
+
+          <div className="d-flex gap-3 buttonss">
+            <Button title={"Signin"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/'}/>
+            <Button title={"Signup"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/signup'}/>
           </div>
         </nav>
       </div>

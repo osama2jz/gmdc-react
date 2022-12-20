@@ -19,6 +19,7 @@ const general = {
   children: [
     { path: routeNames.general.landing, element: <Landing /> },
     { path: routeNames.general.inventory, element: <Inventory /> },
+    { path: routeNames.general.inventory2, element: <Inventory /> },
     { path: routeNames.general.viewCar, element: <ViewCar /> },
     { path: routeNames.general.apply, element: <ApplyOnline /> },
     { path: routeNames.general.aboutUs, element: <AboutUs /> },
