@@ -1,0 +1,14 @@
+{
+   "generic": {
+      "404": "404 Oops! you're lost.",
+      "404Msg": "The page you are looking for was not found.",
+      "401": "401 Oops! Not Authorized.",
+      "401Msg": "You are not authorized for this action.",
+      "500": "500 Houston, we have a problem!",
+      "500Msg": "The page you are looking for is temporarily unavailable.",
+      "success": "Success",
+      "error": "Error",
+      "noDataFound": "No Data Found",
+      "errMsg": "Something went wrong, please try again later!"
+   }
+}

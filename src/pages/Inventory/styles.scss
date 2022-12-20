@@ -1,0 +1,48 @@
+@import "../../styles/colors.scss";
+
+.main2 {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../../assets//wall.webp");
+  height: 400px;
+  width: 100vw;
+  text-align: center;
+  background-position: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.inven {
+  display: flex;
+  margin-top: 20px;
+}
+.search {
+  display: flex;
+  height: 60px;
+  width: 600px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 5;
+}
+.filters {
+  width: 35%;
+  padding: 1%;
+  border-right: 1px solid rgb(0, 0, 0, 0.1);
+}
+@media only screen and (max-width: 600px) {
+  .inven {
+    display: flex;
+    flex-direction: column;
+  }
+  .filters {
+    width: 90%;
+    border: none;
+    margin: auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+  }
+  .search {
+    width: 100%;
+  }
+}

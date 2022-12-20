@@ -1,0 +1,21 @@
+@import "../../styles/theme.scss";
+
+.card {
+  width: 350px;
+  min-height: 420px;
+  margin-bottom: 30px;
+  transition: scale 0.2s;
+  margin: auto;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.card:hover {
+  cursor: pointer;
+  scale: 1.01;
+  border: 1px solid rgba(0, 75, 148);
+}
+h6, h5 {
+  font-weight: normal;
+}
+h3{
+  font-size: 18px;
+}

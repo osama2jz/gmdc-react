@@ -1,0 +1,152 @@
+{
+   "generic": {
+      "pises": "PISES",
+      "404": "404 Oops! you're lost.",
+      "404Msg": "The page you are looking for was not found.",
+      "401": "401 Oops! Not Authorized.",
+      "401Msg": "You are not authorized for this action.",
+      "500": "500 Houston, we have a problem!",
+      "500Msg": "The page you are looking for is temporarily unavailable.",
+      "success": "Success",
+      "error": "Error",
+      "noDataFound": "No Data Found",
+      "errMsg": "Something went wrong, please try again later!"
+   },
+   "header": {
+      "virtualLearning": "Virtual Learning",
+      "cambridgeExamUpdates": "Cambridge Exam Updates",
+      "jobOpportunities": "Job Opportunities",
+      "newsEvents": "News & Events",
+      "downloads": "Downloads",
+      "pisesianHangouts": "Pisesian Hangouts",
+      "PSNI": "PSNI",
+      "Portal": "Portal",
+      "aboutUs": "About Us",
+      "school": "School",
+      "admissions": "Admissions",
+      "academics": "Academics",
+      "contactUs": "Contact Us"
+   },
+   "footer": {
+      "desc": "PISES is a non-profit English medium school, designed primarily to serve the needs of children from ages 3-18 of the Pakistani Community.",
+      "navigate": "Navigate",
+      "home": "Home",
+      "features": "Features",
+      "gallery": "Gallery",
+      "aboutUs": "About us",
+      "quickLinks": "Quick Links",
+      "pisesFacilities": "PISES Facilities",
+      "admissions": "Admissions",
+      "learningGoals": "Learning Goals",
+      "downloads": "Downloads",
+      "contactUs": "Contact Us",
+      "email": "Email",
+      "subscribe": "Subscribe",
+      "copyRight1": "© 2022",
+      "copyRight2": "PISES Riyadh",
+      "copyRight3": "© 2022 All Rights Reserved."
+   },
+   "landing": {
+      "carousel": {
+         "slide1": {
+            "pises": "PISES",
+            "vision": "VISION",
+            "desc": "“To enable students to\nthrive and succeed”"
+         },
+         "slide2": {
+            "pises": "PISES",
+            "vision": "VISION",
+            "desc1": "“To impart",
+            "desc2": "quality education",
+            "desc3": "to",
+            "desc4": "students",
+            "desc5": "and",
+            "desc6": "build their character",
+            "desc7": "through proper guidance and conducive environment to make them”",
+            "desc8": "valuable contributors",
+            "desc9": "to society”"
+         },
+         "slide3": {
+            "title1": "At",
+            "title2": "PISES",
+            "title3": "We",
+            "title4": "Care",
+            "c": "C -",
+            "a": "A -",
+            "r": "R -",
+            "e": "E -",
+            "desc1": "Confident & Creative",
+            "desc2": "Aim high , Be ambitious",
+            "desc3": "Responsible & Respectful",
+            "desc4": "Everyone matters"
+         }
+      },
+      "welcome": {
+         "title1": "Welcome to",
+         "desc": "Pakistan International School, Riyadh, English Section, is a non-profit English medium school, designed primarily to serve the needs of the children from ages 3-18 of the Pakistani Community. The school was established in September 1995 under the supervision of the Embassy of Pakistan with H.E., the Ambassador of Pakistan, as its Patron-in-Chief.",
+         "preSchool": {
+            "title": "PRE SCHOOL",
+            "desc": "At prep School our aim is to provide a happy, secure environment for the youngest students in our care. We base our curriculum on the Foundation Stage Early Learning Goals."
+         },
+         "juniorSchool": {
+            "title": "JUNIOR SCHOOL",
+            "desc": "We aim to provide each child with an enjoyable, rich and informative education which helps to develop the ‘whole child’; in the hope that they will be prepared for much of what their future holds for them."
+         },
+         "mediumSchool": {
+            "title": "MEDIUM SCHOOL",
+            "desc": "Our Middle School builds self-esteem and lays the groundwork for high school. At PISES, your children can look back at middle school as one of the best times of their lives. They can work on the things they love."
+         },
+         "seniorSchool": {
+            "title": "SENIOR SCHOOL",
+            "desc": "The Senior School covers grade 8 to grade 12 of a child’s academic life – students join the Senior School at age 13, completing their education at 16 or 18. The academic program is based on the British National Curriculum."
+         },
+         "newsUpdate": {
+            "title": "News Updates",
+            "desc": "PISES provides good quality modern education including a strong component of culture, inculcation of values, awareness of...",
+            "button": "Find out more"
+         }
+      },
+      "gallery": {
+         "ourGallery": "Our Gallery",
+         "viewAll": "view all"
+      },
+      "clientTestimonials": {
+         "title": "BE PART OF THE CHANGE !",
+         "clientTestimonials": "Client Testimonials",
+         "testimonials1": {
+            "desc": "It's a privilege and great pleasure to visit PISES, Riyadh. A great facility with compatible staff for growing and educating the Pakistani youth. The impact of the entire visit is tremendous.",
+            "name": "Brig. (R) Abdul Hafeez",
+            "position": "Principal Cadet College Batrasi, Mansehra _ March 12, 2017"
+         }
+      },
+      "getInTouch": {
+         "title": "Get in touch with us",
+         "form": {
+            "title": "The School is happy to deal with any general inquiries.",
+            "fullName": "Full name",
+            "email": "Email",
+            "phoneNumber": "Phone number",
+            "msg": "Write Your Message...",
+            "submit": "Submit"
+         }
+      },
+      "aboutUs": {
+         "ministry": {
+            "title": "Ministry of Education Saudi Arabia",
+            "desc": "“The education in Saudi Arabia is the necessary base which will help realize the aspiration of our people towards progress and advancement in science and knowledge”."
+         },
+         "cambridge": {
+            "title": "Why Cambridge International?",
+            "desc": "Success in Cambridge qualifications often gives students admission to the world’s best universities – in the US, the UK, Australia, Canada, Germany and beyond."
+         },
+         "edexcel": {
+            "title": "Why Edexcel , Pearson Qualification?",
+            "desc": "Our World Class Qualifications program is bringing together international assessment and education experts to develop qualifications that will support young people in future life."
+         },
+         "britishCouncil": {
+            "title": "British Council in Saudi Arabia",
+            "desc": "We get insulted by others, lose trust for those We get back."
+         }
+      }
+   }
+}

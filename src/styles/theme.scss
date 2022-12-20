@@ -1,0 +1,62 @@
+@import './colors.scss';
+@import './texts.scss';
+@import './fonts.scss';
+
+
+// bg-colors
+.bg-primary {
+   background-color: $primary !important;
+}
+
+.bg-secondary {
+   background-color: $secondary !important;
+}
+
+.bg-tertiary {
+   background-color: $tertiary !important;
+}
+
+.bg-base {
+   background-color: $base !important;
+}
+
+.bg-white {
+   background-color: $white !important;
+}
+
+.bg-white80 {
+   background-color: $white80 !important;
+}
+
+.bg-grey {
+   background-color: $grey !important;
+}
+
+// text-colors
+.text-primary {
+   color: $primary !important;
+}
+
+.text-secondary {
+   color: $secondary !important;
+}
+
+.text-tertiary {
+   color: $tertiary !important;
+}
+
+.text-base {
+   color: $base !important;
+}
+
+.text-white {
+   color: $white !important;
+}
+
+.text-white80 {
+   color: $white80 !important;
+}
+
+.text-grey {
+   color: $grey !important;
+}

@@ -1,0 +1,76 @@
+@import "../../styles/colors.scss";
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 550px;
+  background-position: center center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.col {
+  // max-width: 33%;
+  text-transform: capitalize;
+}
+.mr-2 {
+  margin-right: 5px;
+}
+.search {
+  display: flex;
+  height: 60px;
+  width: 600px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: white;
+  z-index: 5;
+}
+.specs {
+  border-right: 1px solid rgb(0, 0, 0, 0.3);
+  width: 60%;
+}
+.cars {
+  display: flex;
+  gap: 5%;
+  flex-direction: row;
+  margin-top: 10px;
+  z-index: 5;
+}
+h1 {
+  z-index: 5;
+  font-weight: bold;
+  font-size: 40px;
+  color: white;
+  margin: 20px 0px;
+}
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+}
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+h4 {
+  font-size: 30px;
+  color: rgb(0, 0, 0, 0.6);
+}
+@media only screen and (max-width: 600px) {
+  .specss {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0px !important;
+  }
+  .specs {
+    border: none;
+    width: 100vw;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+    text-align: justify;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+  }
+  .status {
+    height: 35px;
+  }
+}

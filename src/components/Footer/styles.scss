@@ -1,0 +1,12 @@
+@import "../../styles/theme.scss";
+
+@media only screen and (max-width: 600px) {
+  .foot {
+    width: 100% !important;
+    margin-left: 0px !important;
+    text-align: justify;
+  }
+  .topp {
+    margin-left: 5px !important;
+  }
+}
