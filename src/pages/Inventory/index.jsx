@@ -81,7 +81,7 @@ const Inventory = () => {
       })
       .catch((err) => console.error(err));
   };
-console.log("page", page)
+  console.log("page", page);
   const applySearch = () => {
     navigate("/inventory");
   };
@@ -128,19 +128,17 @@ console.log("page", page)
               "Electric",
             ]}
           />
-          <DropDown
-            onChange={(v) => setModel(v)}
-            style={{ width: "80% !important" }}
-            title="Make/Model"
-            children={[
-              "Honda",
-              "Toyota",
-              "Nissan",
-              "Suzuki",
-              "Ford",
-              "BMW",
-              "Audi",
-            ]}
+          <h6 className="mt-3">Make</h6>
+          <InputField
+            title="Make"
+            type="number"
+            // onChange={(v) => setPrice({ ...price, from: v.target.value })}
+          />
+          <h6 className="mt-3">Model</h6>
+          <InputField
+            title="Make"
+            type="number"
+            // onChange={(v) => setPrice({ ...price, from: v.target.value })}
           />
           <h6 className="mt-3">Vehicle Price</h6>
           <div className="d-flex align-items-center">
@@ -179,7 +177,7 @@ console.log("page", page)
               }
             />
           </div>
-          <h6 className="mt-3">Engine Type</h6>
+          <h6 className="mt-3">Fuel Type</h6>
           <div className="w-25 d-flex gap-4">
             <Checkbox
               size="xs"
@@ -212,7 +210,7 @@ console.log("page", page)
               }
             />
           </div>
-          <h6 className="mt-3">Make</h6>
+          <h6 className="mt-3">Year</h6>
           <div className="d-flex align-items-center">
             <InputField
               title="From"
@@ -286,7 +284,12 @@ console.log("page", page)
                 </div>
               );
             })}
-            <Pagination total={Math.ceil(count/9)} position="center" className="mb-2 w-100" onChange={(v)=>setPage(v)}/>
+            <Pagination
+              total={Math.ceil(count / 9)}
+              position="center"
+              className="mb-2 w-100"
+              onChange={(v) => setPage(v)}
+            />
           </div>
         ) : (
           <Loader className="w-100 m-auto" />
