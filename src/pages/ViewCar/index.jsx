@@ -13,6 +13,7 @@ import { Carousel } from "@mantine/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Loader } from "@mantine/core";
 import { useParams, useNavigate } from "react-router-dom";
+import Car360View from "../../components/3Dmodel";
 
 const ViewCar = ({}) => {
   const params = useParams();
@@ -41,7 +42,7 @@ const ViewCar = ({}) => {
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(car);
+  // console.log(car);
   return (
     <Page meta="PISES">
       {car.title ? (
@@ -72,6 +73,12 @@ const ViewCar = ({}) => {
               </Carousel.Slide>
             )}
           </Carousel>
+          {car.image360 && (
+            <Car360View
+              basePath={car.image360?.basePath}
+              amount={car.image360?.amount}
+            />
+          )}
           <div
             className="d-flex p-3 justify-content-between my-4 rounded"
             style={{
@@ -107,7 +114,7 @@ const ViewCar = ({}) => {
                 style={{
                   backgroundColor: status,
                   color: "white",
-                  marginTop:'2px',
+                  marginTop: "2px",
                   padding: "2px 7px",
                   minWidth: "70px",
                   textAlign: "center",

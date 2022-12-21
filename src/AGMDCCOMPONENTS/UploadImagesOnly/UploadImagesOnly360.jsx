@@ -244,7 +244,7 @@ const UploadImagesOnly360 = (props) => {
             <SimpleGrid
               cols={6}
               breakpoints={[{ maxWidth: 'sm', cols: 1 }]}
-              mt={previews.length > 0 ? 'xl' : 0}
+              mt={previews?.length > 0 ? 'xl' : 0}
             >
               {previews}
             </SimpleGrid>
