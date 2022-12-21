@@ -13,6 +13,7 @@ import { Carousel } from "@mantine/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { Loader } from "@mantine/core";
 import { useParams, useNavigate } from "react-router-dom";
+import Car360View from "../../components/3Dmodel";
 
 const ViewCar = ({}) => {
   const params = useParams();
@@ -46,6 +47,10 @@ const ViewCar = ({}) => {
     <Page meta="PISES">
       {car.title ? (
         <>
+          <Car360View
+            basePath={car.image360?.basePath}
+            amount={car.image360?.amount}
+          />
           <Carousel
             align="center"
             plugins={[autoplay.current]}
@@ -107,7 +112,7 @@ const ViewCar = ({}) => {
                 style={{
                   backgroundColor: status,
                   color: "white",
-                  marginTop:'2px',
+                  marginTop: "2px",
                   padding: "2px 7px",
                   minWidth: "70px",
                   textAlign: "center",
@@ -201,7 +206,9 @@ const ViewCar = ({}) => {
             <div className="d-flex flex-column m-auto text-center gap-y-2 bmob">
               <h4>Found Your Dream Vehicle?</h4>
               <Button
-                onClick={() => navigate("/apply")}
+                onClick={() =>
+                  (window.location.href = "http://gmdc-admin.vercel.app/")
+                }
                 title="Book Now"
                 fontSize={"30px"}
                 primary={true}
