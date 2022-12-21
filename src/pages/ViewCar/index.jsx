@@ -42,15 +42,11 @@ const ViewCar = ({}) => {
       })
       .catch((err) => console.error(err));
   }, []);
-  console.log(car);
+  // console.log(car);
   return (
     <Page meta="PISES">
       {car.title ? (
         <>
-          <Car360View
-            basePath={car.image360?.basePath}
-            amount={car.image360?.amount}
-          />
           <Carousel
             align="center"
             plugins={[autoplay.current]}
@@ -77,6 +73,12 @@ const ViewCar = ({}) => {
               </Carousel.Slide>
             )}
           </Carousel>
+          {car.image360 && (
+            <Car360View
+              basePath={car.image360?.basePath}
+              amount={car.image360?.amount}
+            />
+          )}
           <div
             className="d-flex p-3 justify-content-between my-4 rounded"
             style={{
@@ -206,9 +208,7 @@ const ViewCar = ({}) => {
             <div className="d-flex flex-column m-auto text-center gap-y-2 bmob">
               <h4>Found Your Dream Vehicle?</h4>
               <Button
-                onClick={() =>
-                  (window.location.href = "http://gmdc-admin.vercel.app/")
-                }
+                onClick={() => navigate("/apply")}
                 title="Book Now"
                 fontSize={"30px"}
                 primary={true}
