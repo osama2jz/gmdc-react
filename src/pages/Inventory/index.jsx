@@ -161,6 +161,7 @@ const Inventory = () => {
   //Clear Filters
 
   const clearFilters = () => {
+    navigate("/inventory")
     window.location.reload();
   };
 

@@ -71,11 +71,11 @@ const Landing = () => {
           <div className="cars">
             <MiniCard title="Truck" icon="trucks" />
             <MiniCard
-              title="Hatchbacks"
+              title="Hatchback"
               icon="hatchbacks"
             />
             <MiniCard
-              title="Sedans"
+              title="Sedan"
               icon="sedan"
             />
           </div>
@@ -89,7 +89,7 @@ const Landing = () => {
               icon="ev"
             />
             <MiniCard
-              title="SUVs"
+              title="SUV"
               icon="suv"
             />
           </div>
