@@ -1,22 +1,24 @@
-import React, { useState } from "react";
-import { withTranslation } from "react-i18next";
-import { useScrollDirection } from "../../hooks";
-import routeNames from "../../routes/routeNames";
-import Button from "../Button";
+import React, { useState } from 'react'
+import { withTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
+import { useScrollDirection } from '../../hooks'
+import routeNames from '../../routes/routeNames'
+import Button from '../Button'
 // import logo from "../../assets/logo.svg";
 
-import "./styles.scss";
+import './styles.scss'
 
 const Header = ({ t }) => {
-  const scrollDirection = useScrollDirection();
-  const [show, setShow] = useState(false);
+  let navigate
+  const scrollDirection = useScrollDirection()
+  const [show, setShow] = useState(false)
 
   return (
     <div className="header">
       <div>
         <nav
           className="navbar navbar-2 navbar-expand-md d-flex"
-          style={{ height: show ? "300px" : "70px", justifyContent:'between' }}
+          style={{ height: show ? '300px' : '70px', justifyContent: 'between' }}
         >
           <a className="navbar-brand" href="/">
             GMDC
@@ -34,16 +36,16 @@ const Header = ({ t }) => {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div style={{ display: show ? "block" : "none" }} className="mob">
+          <div style={{ display: show ? 'block' : 'none' }} className="mob">
             <ul className="navbar-nav mr-auto">
               <li className="nav-item">
                 <a className="nav-link" href={routeNames.general.landing}>
                   Home
                 </a>
               </li>
-              {localStorage.getItem("userData") &&
-              JSON.parse(localStorage.getItem("userData")).role ===
-                "customer" ? (
+              {localStorage.getItem('userData') &&
+              JSON.parse(localStorage.getItem('userData')).role ===
+                'customer' ? (
                 <li className="nav-item">
                   <a className="nav-link" href={routeNames.general.dashboard}>
                     Dashboard
@@ -67,9 +69,13 @@ const Header = ({ t }) => {
               </li>
             </ul>
             <div className="d-flex flex-column gap-2">
-            <Button title={"Signin"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/'}/>
-            <Button title={"Signup"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/signup'}/>
-          </div>
+              <a href={routeNames.general.login}>
+                <Button title={'Signin'} primary={true} />
+              </a>
+              <a href={routeNames.general.signup}>
+                <Button title={'Signup'} primary={true} />
+              </a>
+            </div>
           </div>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav m-auto">
@@ -78,9 +84,9 @@ const Header = ({ t }) => {
                   Home
                 </a>
               </li>
-              {localStorage.getItem("userData") &&
-              JSON.parse(localStorage.getItem("userData")).role ===
-                "customer" ? (
+              {localStorage.getItem('userData') &&
+              JSON.parse(localStorage.getItem('userData')).role ===
+                'customer' ? (
                 <li className="nav-item">
                   <a className="nav-link" href={routeNames.general.dashboard}>
                     Dashboard
@@ -106,13 +112,17 @@ const Header = ({ t }) => {
           </div>
 
           <div className="d-flex gap-3 buttonss">
-            <Button title={"Signin"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/'}/>
-            <Button title={"Signup"} primary={true} onClick={()=> window.location.href='http://gmdc-admin.vercel.app/signup'}/>
+            <a href={routeNames.general.login}>
+              <Button title={'Signin'} primary={true} />
+            </a>
+            <a href={routeNames.general.signup}>
+              <Button title={'Signup'} primary={true} />
+            </a>
           </div>
         </nav>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default withTranslation()(Header);
+export default withTranslation()(Header)
