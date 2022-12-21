@@ -62,7 +62,7 @@ const Landing = () => {
             onChange={(v) => setSearchh(v.target.value)}
           />
           <Button
-            onClick={() => navigate(`/inventory/${searchh}`)}
+            onClick={() => navigate(`/inventory/s/${searchh}`)}
             title={"GO"}
             primary={true}
           />

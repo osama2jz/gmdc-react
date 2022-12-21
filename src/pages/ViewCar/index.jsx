@@ -47,7 +47,7 @@ const ViewCar = ({}) => {
       {car.title ? (
         <>
           <Carousel
-            align="start"
+            align="center"
             plugins={[autoplay.current]}
             onMouseEnter={autoplay.current.stop}
             onMouseLeave={autoplay.current.reset}
@@ -73,7 +73,7 @@ const ViewCar = ({}) => {
             )}
           </Carousel>
           <div
-            className="d-flex p-3 justify-content-between my-4 rounded align-items-center"
+            className="d-flex p-3 justify-content-between my-4 rounded"
             style={{
               width: "98vw",
               backgroundColor: "rgb(0, 0, 0, 0.1)",
@@ -107,6 +107,7 @@ const ViewCar = ({}) => {
                 style={{
                   backgroundColor: status,
                   color: "white",
+                  marginTop:'2px',
                   padding: "2px 7px",
                   minWidth: "70px",
                   textAlign: "center",
@@ -197,7 +198,7 @@ const ViewCar = ({}) => {
               <h3>Vehicle Details</h3>
               <p>{car.description}</p>
             </div>
-            <div className="d-flex flex-column m-auto text-center gap-y-2">
+            <div className="d-flex flex-column m-auto text-center gap-y-2 bmob">
               <h4>Found Your Dream Vehicle?</h4>
               <Button
                 onClick={() => navigate("/apply")}

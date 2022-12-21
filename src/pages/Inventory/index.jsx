@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { withTranslation } from "react-i18next";
 import Button from "../../components/Button";
 import Page from "../../components/Page";
@@ -15,25 +15,23 @@ const Inventory = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const [search, setSearch] = useState("");
-  const [type, setType] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState();
+  const [type, setType] = useState();
+  const [make, setMake] = useState();
+  const [model, setModel] = useState();
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0);
   const [cars, setCars] = useState({});
-  const [model, setModel] = useState({ from: "", to: "" });
-  const [price, setPrice] = useState({ from: "", to: "" });
-  const [transmission, setTransmission] = useState({
-    auto: false,
-    manual: false,
-  });
-  const [mileage, setMileage] = useState({ From: "", to: "" });
-  const [hp, setHp] = useState({ From: "", to: "" });
-  const [engine, setEngine] = useState({
-    fuel: false,
-    electric: false,
-    hybrid: false,
-  });
+  const [year, setyear] = useState({ from: undefined, to: undefined });
+  const [price, setPrice] = useState({ from: undefined, to: undefined });
+  const [transmission, setTransmission] = useState([]);
+  const [mileage, setMileage] = useState({ from: undefined, to: undefined });
+  const [hp, setHp] = useState({ from: undefined, to: undefined });
+  const [engine, setEngine] = useState([]);
+
   useEffect(() => {
+    setLoading(true);
     if (params.filter) {
       const options = {
         method: "GET",
@@ -46,6 +44,22 @@ const Inventory = () => {
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setLoading(false);
+        })
+        .catch((err) => console.error(err));
+    } else if (params.search) {
+      const options = {
+        method: "GET",
+      };
+
+      fetch(
+        `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=${page}&search=${params.search.toLocaleLowerCase()}`,
+        options
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          setCars((cars) => response.data.vehicles);
+          setLoading(false);
         })
         .catch((err) => console.error(err));
     } else {
@@ -60,6 +74,7 @@ const Inventory = () => {
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setLoading(false);
         })
         .catch((err) => console.error(err));
     }
@@ -81,40 +96,74 @@ const Inventory = () => {
       })
       .catch((err) => console.error(err));
   }, []);
+
+  //apply filters
   const applyFilters = () => {
-    const options = {
-      method: "GET",
-      // headers: {
-      //   authorization:
-      //     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOWE4OWY0YjM4NmRhZmQwMjU3NzYxOSIsInJvbGUiOiJhZG1pbiIsImFkbWluIjp0cnVlLCJzdGF0dXMiOjEsImlhdCI6MTY3MTUzNTUyNywiZXhwIjoxNjc0MTI3NTI3fQ.8AVWFOxDbc1llTwDASK6U4uPQg1xgw-26rGziFVGroc",
-      // },
-    };
-    fetch(
-      "https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1",
-      options
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((err) => console.error(err));
-  };
-  console.log("page", page);
-  const applySearch = () => {
+    setLoading(true);
+    let url =
+      "https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1";
+    if (type) url = url + "&vehicleType=" + type.toLocaleLowerCase();
+    if (search) url = url + "&search=" + search.toLocaleLowerCase();
+    if (make) url = url + "&make=" + make.toLocaleLowerCase();
+    if (model) url = url + "&model=" + model.toLocaleLowerCase();
+    if (transmission.length > 0)
+      url = url + "&transmission=" + transmission.toString();
+    if (engine.length > 0) url = url + "&fuelType=" + engine.toString();
+    if (price.from) url = url + "&minPrice=" + price.from;
+    if (price.to) url = url + "&maxPrice=" + price.to;
+    if (year.from) url = url + "&minYear=" + year.from;
+    if (year.to) url = url + "&maxYear=" + year.to;
+    if (mileage.from) url = url + "&minMileage=" + mileage.from;
+    if (mileage.to) url = url + "&maxMileage=" + mileage.to;
     const options = {
       method: "GET",
     };
     fetch(
-      `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1&search=${search}`,
+      // `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1&vehicleType=${type.toLocaleLowerCase()}&search=${search}&make=${make}&transmission=${transmission.toString()}&fuelType=${engine.toString()}&minPrice=${
+      //   price.from
+      // }&maxPrice=${price.to}&minYear=${year.from}&maxYear=${
+      //   year.to
+      // }&minHorsePower=${hp.to}&maxHorsePower=${hp.from}&minMileage=${
+      //   mileage.from
+      // }&maxMileage=${mileage.to}`,
+      url,
       options
     )
       .then((response) => response.json())
       .then((response) => {
         setCars((cars) => response.data.vehicles);
+        setLoading(false);
       })
       .catch((err) => console.error(err));
   };
-  console.log("cars", count);
+
+  //search
+  const applySearch = () => {
+    setLoading(true);
+    let url = "";
+    if (search.length > 0)
+      url = `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1&search=${search}`;
+    else
+      url =
+        "https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1";
+    const options = {
+      method: "GET",
+    };
+    fetch(url, options)
+      .then((response) => response.json())
+      .then((response) => {
+        setCars((cars) => response.data.vehicles);
+        setLoading(false);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  //Clear Filters
+
+  const clearFilters = () => {
+    window.location.reload();
+  };
+
   return (
     <Page meta="PISES">
       <div className="main2">
@@ -138,6 +187,7 @@ const Inventory = () => {
             placeholder="Search Make, Model or keyword"
             onChange={(v) => setSearch(v.target.value)}
             style={{ width: "100vw", border: "none" }}
+            className='in'
           />
           <Button onClick={applySearch} title={"GO"} primary={true} />
         </div>
@@ -161,14 +211,14 @@ const Inventory = () => {
           <h6 className="mt-3">Make</h6>
           <InputField
             title="Make"
-            type="number"
-            // onChange={(v) => setPrice({ ...price, from: v.target.value })}
+            type="text"
+            onChange={(v) => setMake(v.target.value)}
           />
           <h6 className="mt-3">Model</h6>
           <InputField
             title="Make"
-            type="number"
-            // onChange={(v) => setPrice({ ...price, from: v.target.value })}
+            type="text"
+            onChange={(v) => setModel(v.target.value)}
           />
           <h6 className="mt-3">Vehicle Price</h6>
           <div className="d-flex align-items-center">
@@ -185,60 +235,31 @@ const Inventory = () => {
             />
           </div>
           <h6 className="mt-3">Transmission</h6>
-          <div className="w-25 d-flex gap-4">
-            <Checkbox
+          <div>
+            <Checkbox.Group
+              className="d-flex"
+              value={transmission}
               size="xs"
-              label="Automatic"
-              onChange={(event) =>
-                setTransmission({
-                  ...transmission,
-                  auto: event.currentTarget.checked,
-                })
-              }
-            />
-            <Checkbox
-              size="xs"
-              label="Manual"
-              onChange={(event) =>
-                setTransmission({
-                  ...transmission,
-                  manual: event.currentTarget.checked,
-                })
-              }
-            />
+              onChange={setTransmission}
+            >
+              <Checkbox value="automatic" label="Automatic" />
+              <Checkbox value="manual" label="Manual" />
+            </Checkbox.Group>
           </div>
           <h6 className="mt-3">Fuel Type</h6>
-          <div className="w-25 d-flex gap-4">
-            <Checkbox
+          <div className="d-flex gap-4">
+            <Checkbox.Group
+              className="d-flex"
+              value={engine}
               size="xs"
-              label="Fuel"
-              onChange={(event) =>
-                setEngine({
-                  ...engine,
-                  fuel: event.currentTarget.checked,
-                })
-              }
-            />
-            <Checkbox
-              size="xs"
-              label="Electric"
-              onChange={(event) =>
-                setEngine({
-                  ...engine,
-                  electric: event.currentTarget.checked,
-                })
-              }
-            />
-            <Checkbox
-              size="xs"
-              label="Hybrid"
-              onChange={(event) =>
-                setEngine({
-                  ...engine,
-                  hybrid: event.currentTarget.checked,
-                })
-              }
-            />
+              onChange={setEngine}
+            >
+              <Checkbox value="petrol" label="Petrol" />
+              <Checkbox value="diesel" label="Diesel" />
+              <Checkbox value="gasoline" label="Gasoline" />
+              <Checkbox value="electric" label="Electric" />
+              <Checkbox value="hybrid" label="Hybrid" />
+            </Checkbox.Group>
           </div>
           <h6 className="mt-3">Year</h6>
           <div className="d-flex align-items-center">
@@ -247,21 +268,21 @@ const Inventory = () => {
               type="number"
               onChange={(v) => setModel({ ...model, from: v.target.value })}
             />
-            <p className="mx-3">-</p>
+            <p className="mx-3 my-0">-</p>
             <InputField
               title="To"
               type="number"
               onChange={(v) => setModel({ ...model, to: v.target.value })}
             />
           </div>
-          <h6 className="mt-3">Mileage</h6>
+          <h6 className="mt-3 ">Mileage</h6>
           <div className="d-flex align-items-center">
             <InputField
               title="From"
               type="number"
               onChange={(v) => setMileage({ ...mileage, from: v.target.value })}
             />
-            <p className="mx-3">-</p>
+            <p className="mx-3 my-0">-</p>
             <InputField
               title="To"
               type="number"
@@ -275,7 +296,7 @@ const Inventory = () => {
               type="number"
               onChange={(v) => setHp({ ...hp, from: v.target.value })}
             />
-            <p className="mx-3">-</p>
+            <p className="mx-3 my-0">-</p>
             <InputField
               title="To"
               type="number"
@@ -283,47 +304,63 @@ const Inventory = () => {
             />
           </div>
           <div
-            style={{ width: "100%", textAlign: "center", marginTop: "10px" }}
+            style={{
+              width: "100%",
+              marginTop: "10px",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
           >
             <Button
               title="Apply"
               primary={true}
-              width="200px"
+              width="100px"
               onClick={applyFilters}
             />
+            <Button title="Clear" width="100px" onClick={clearFilters} />
           </div>
         </div>
-        {cars.length > 0 ? (
-          <div className="row px-2 d-flex m-auto mt-2">
-            {cars.map((obj, key) => {
-              return (
-                <div className="col mb-4" key={key}>
-                  <InventoryCard
-                    id={obj._id}
-                    title={obj.title}
-                    icon={obj.assets[0]?.asset}
-                    trans={obj.transmission}
-                    mileage={`${obj.mileage} miles`}
-                    price={`$${obj.price}`}
-                    price2="$250"
-                    vin={obj.vin}
-                    model={obj.year}
-                    location={obj.location}
-                    awd={obj.driveTrain}
-                  />
-                </div>
-              );
-            })}
-            <Pagination
-              total={Math.ceil(count / 9)}
-              position="center"
-              className="mb-2 w-100"
-              onChange={(v) => setPage(v)}
-            />
-          </div>
-        ) : (
-          <Loader className="w-100 m-auto" />
-        )}
+        <div className="row w-100 d-flex m-auto mt-2">
+          {loading && <Loader className="w-100 m-auto" />}
+          {cars.length > 0
+            ? cars.map((obj, key) => {
+                return (
+                  <div className="col mb-4" key={key}>
+                    <InventoryCard
+                      id={obj._id}
+                      title={obj.title}
+                      icon={obj.assets[0]?.asset}
+                      trans={obj.transmission}
+                      mileage={`${obj.mileage} miles`}
+                      price={`$${obj.price}`}
+                      price2="$250"
+                      vin={obj.vin}
+                      model={obj.year}
+                      location={obj.location}
+                      awd={obj.driveTrain}
+                    />
+                  </div>
+                );
+              })
+            : !loading && (
+                <h2
+                  style={{
+                    width: "100%",
+                    textAlign: "center",
+                    height: "100vh",
+                    color: "rgb(0,0,0,0.6)",
+                  }}
+                >
+                  No Data Found
+                </h2>
+              )}
+          <Pagination
+            total={Math.ceil(count / 9)}
+            position="center"
+            className="mb-2 w-100"
+            onChange={(v) => setPage(v)}
+          />
+        </div>
       </div>
     </Page>
   );
