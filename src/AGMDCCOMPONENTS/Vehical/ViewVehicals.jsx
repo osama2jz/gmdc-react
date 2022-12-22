@@ -532,9 +532,8 @@ const ViewVehicles = ({ setCurrentLocation }) => {
           (x) =>
             x.title?.toLowerCase().includes(search.toLowerCase()) ||
             x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-            x.color?.toString().toLowerCase().includes(search.toLowerCase()) ||
             x.make?.toLowerCase().includes(search.toLowerCase()) ||
-            x.year?.toLowerCase().includes(search.toLowerCase()) ||
+            // x.year?.includes(search) ||
             x?.type?.toLowerCase().includes(search.toLowerCase()) ||
             x?.trim?.toLowerCase().includes(search.toLowerCase())
         )
@@ -551,13 +550,9 @@ const ViewVehicles = ({ setCurrentLocation }) => {
             x.transmission === transmissionType &&
             (x.title?.toLowerCase().includes(search.toLowerCase()) ||
               x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-              x.color
-
-                ?.toString()
-                .toLowerCase()
-                .includes(search.toLowerCase()) ||
               x?.type?.toLowerCase().includes(search.toLowerCase()) ||
               x?.trim?.toLowerCase().includes(search.toLowerCase()) ||
+              // x.year?.includes(search) ||
               x.make?.toLowerCase().includes(search.toLowerCase()))
         )
       );
@@ -573,12 +568,8 @@ const ViewVehicles = ({ setCurrentLocation }) => {
             x?.condition === condition &&
             (x.title?.toLowerCase().includes(search.toLowerCase()) ||
               x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-              x.color
-                ?.toString()
-                .toLowerCase()
-                .includes(search.toLowerCase()) ||
               x.make?.toLowerCase().includes(search.toLowerCase()) ||
-              x.year?.toLowerCase().includes(search.toLowerCase()) ||
+              // x.year?.includes(search) ||
               x?.type?.toLowerCase().includes(search.toLowerCase()) ||
               x?.trim?.toLowerCase().includes(search.toLowerCase()))
         )
@@ -596,13 +587,8 @@ const ViewVehicles = ({ setCurrentLocation }) => {
             x?.transmission === transmissionType &&
             (x.title?.toLowerCase().includes(search.toLowerCase()) ||
               x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-              x.color
-
-                ?.toString()
-                .toLowerCase()
-                .includes(search.toLowerCase()) ||
               x.make?.toLowerCase().includes(search.toLowerCase()) ||
-              x.year?.toLowerCase().includes(search.toLowerCase()) ||
+              // x.year?.includes(search) ||
               x?.type?.toLowerCase().includes(search.toLowerCase()) ||
               x?.trim?.toLowerCase().includes(search.toLowerCase()))
         )
@@ -621,13 +607,8 @@ const ViewVehicles = ({ setCurrentLocation }) => {
             x.status === soldStatus &&
             (x.title?.toLowerCase().includes(search.toLowerCase()) ||
               x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-              x.color
-
-                ?.toString()
-                .toLowerCase()
-                .includes(search.toLowerCase()) ||
               x.make?.toLowerCase().includes(search.toLowerCase()) ||
-              x.year?.toLowerCase().includes(search.toLowerCase()) ||
+              // x.year?.includes(search) ||
               x?.type?.toLowerCase().includes(search.toLowerCase()) ||
               x?.trim?.toLowerCase().includes(search.toLowerCase()))
         )
@@ -645,13 +626,8 @@ const ViewVehicles = ({ setCurrentLocation }) => {
             x.status === soldStatus &&
             (x.title?.toLowerCase().includes(search.toLowerCase()) ||
               x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-              x.color
-
-                ?.toString()
-                .toLowerCase()
-                .includes(search.toLowerCase()) ||
               x.make?.toLowerCase().includes(search.toLowerCase()) ||
-              x.year?.toLowerCase().includes(search.toLowerCase()) ||
+              // x.year?.includes(search) ||
               x?.type?.toLowerCase().includes(search.toLowerCase()) ||
               x?.trim?.toLowerCase().includes(search.toLowerCase()))
         )
@@ -669,13 +645,8 @@ const ViewVehicles = ({ setCurrentLocation }) => {
             x.status === soldStatus &&
             (x.title?.toLowerCase().includes(search.toLowerCase()) ||
               x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-              x.color
-
-                ?.toString()
-                .toLowerCase()
-                .includes(search.toLowerCase()) ||
               x.make?.toLowerCase().includes(search.toLowerCase()) ||
-              x.year?.toLowerCase().includes(search.toLowerCase()) ||
+              // x.year?.includes(search) ||
               x?.type?.toLowerCase().includes(search.toLowerCase()) ||
               x?.trim?.toLowerCase().includes(search.toLowerCase()))
         )
@@ -692,13 +663,8 @@ const ViewVehicles = ({ setCurrentLocation }) => {
             x.status === soldStatus &&
             (x.title?.toLowerCase().includes(search.toLowerCase()) ||
               x.vin?.toLowerCase().includes(search.toLowerCase()) ||
-              x.color
-
-                ?.toString()
-                .toLowerCase()
-                .includes(search.toLowerCase()) ||
               x.make?.toLowerCase().includes(search.toLowerCase()) ||
-              x.year?.toLowerCase().includes(search.toLowerCase()) ||
+              // x.year?.includes(search) ||
               x?.type?.toLowerCase().includes(search.toLowerCase()) ||
               x?.trim?.toLowerCase().includes(search.toLowerCase()))
         )
