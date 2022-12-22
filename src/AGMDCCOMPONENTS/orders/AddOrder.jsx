@@ -59,6 +59,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       warrantyFeeRadio: "2400",
       leanFee: 20,
       freightFee: 0,
+      dealerProcessingFee: 499,
       salesTax: 6,
       inspectionFee: 0,
       dealerFeeRadio: "0",
@@ -91,11 +92,12 @@ const AddOrder = ({ setCurrentLocation }) => {
         value >= 0 ? null : "Registration Fee is Required",
 
       licenseFee: (value) => (value >= 0 ? null : "GAP is Required"),
-      warrantyFeeRadio: (value) =>
-        value >= 0 ? null : "Warranty Fee is Required",
+      warrantyFeeRadio: (value) => (value >= 0 ? null : "Warranty is Required"),
 
-      leanFee: (value) => (value >= 0 ? null : "Lean Fee is Required"),
+      leanFee: (value) => (value >= 0 ? null : "Lien Fee is Required"),
       freightFee: (value) => (value >= 0 ? null : "Freight Fee is Required"),
+      dealerProcessingFee: (value) =>
+        value >= 0 ? null : "Freight Fee is Required",
       salesTax: (value) =>
         value >= 0 ? null : "Sales Tax must be greater than 0",
       inspectionFee: (value) =>
@@ -324,6 +326,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       form.setFieldValue("warrantyFeeRadio", response?.warrantyFee?.toString());
       form.setFieldValue("leanFee", response?.leanFee);
       form.setFieldValue("freightFee", response?.freightFee);
+      form.setFieldValue("dealerProcessingFee", response?.dealerProcessingFee);
       form.setFieldValue("salesTax", response?.salesTax);
       form.setFieldValue("inspectionFee", response?.inspectionFee);
       form.setFieldValue("dealerFeeRadio", response?.dealerFee?.toString());
@@ -364,6 +367,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       warrantyFeeRadio,
       leanFee,
       freightFee,
+      dealerProcessingFee,
       salesTax,
       inspectionFee,
       dealerFeeRadio,
@@ -383,6 +387,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       vehiclePrice: vehiclePrice,
       leanFee: leanFee,
       freightFee: freightFee,
+      dealerProcessingFee: dealerProcessingFee,
       salesTax: salesTax,
       inspectionFee: inspectionFee,
       dealerFee: dealerFeeRadio,
@@ -506,6 +511,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       parseInt(form.values.warrantyFeeRadio) +
       parseInt(form.values.leanFee || 0) +
       parseInt(form.values.freightFee || 0) +
+      parseInt(form.values.dealerProcessingFee || 0) +
       parseInt(form.values.salesTax || 0) +
       (parseInt(form.values.dealerFeeRadio) === 300
         ? 300
@@ -529,6 +535,7 @@ const AddOrder = ({ setCurrentLocation }) => {
     form.values.warrantyFeeRadio,
     form.values.leanFee,
     form.values.freightFee,
+    form.values.dealerProcessingFee,
     form.values.salesTax,
     form.values.inspectionFee,
     form.values.dealerFeeRadio,
@@ -716,8 +723,8 @@ const AddOrder = ({ setCurrentLocation }) => {
                   required
                   min={0}
                   hideControls
-                  label="Lean Fee"
-                  placeholder="Enter Lean Fee"
+                  label="Lien Fee"
+                  placeholder="Enter Lien Fee"
                   {...form.getInputProps("leanFee")}
                 />
               </Grid.Col>
@@ -758,11 +765,23 @@ const AddOrder = ({ setCurrentLocation }) => {
                   {...form.getInputProps("freightFee")}
                 />
               </Grid.Col>
+              <Grid.Col md={12} lg={12}>
+                <NumberInput
+                  size="md"
+                  disabled={form.values.vinNumber ? false : true}
+                  required
+                  min={0}
+                  hideControls
+                  label="Dealer Processing Fee"
+                  placeholder="Enter Dealer Processing Free"
+                  {...form.getInputProps("dealerProcessingFee")}
+                />
+              </Grid.Col>
 
               <Grid.Col md={6}>
                 <Input.Wrapper
-                  name="Warranty Fee"
-                  label="Select Warranty Fee"
+                  name="Warranty"
+                  label="Select Warranty"
                   required
                   size="md"
                 >
@@ -776,7 +795,7 @@ const AddOrder = ({ setCurrentLocation }) => {
               <Grid.Col md={6} lg={6}>
                 <NumberInput
                   size="md"
-                  placeholder="Enter Warranty Fee"
+                  placeholder="Enter Warranty"
                   value={
                     form.values.warrantyFeeRadio === "2400"
                       ? 2400
@@ -785,7 +804,7 @@ const AddOrder = ({ setCurrentLocation }) => {
                       : 4000
                   }
                   hideControls
-                  label="Warranty Fee"
+                  label="Warranty"
                   disabled
                   // {...form.getInputProps("dealerFee")}
                 />
@@ -831,7 +850,7 @@ const AddOrder = ({ setCurrentLocation }) => {
                   min={0}
                   hideControls
                   label="Total Price"
-                  description="Total Price = Vehicle Price + Sales Tax + Title Fee + Lean Fee + Registration Fee + GAP + Freight Fee + Warranty Fee + Dealer Fee"
+                  description="Total Price = Vehicle Price + Sales Tax + Title Fee + Lien Fee + Registration Fee + GAP + Freight Fee + Warranty + Dealer Processing Fee+ Dealer Center Fee"
                   {...form.getInputProps("totalPrice")}
                 />
               </Grid.Col>

@@ -88,19 +88,29 @@ const ViewOrderModal = ({ orderDetails }) => {
               <Text>Freight Fee</Text>
             </Grid.Col>
             <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.freightFee}</Text>
+              <Text>Rs. {orderDetails?.freightFee || 0}</Text>
+            </Grid.Col>
+            {userType() === "admin" && (
+              <>
+                <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+                  <Text>Amount Financed (From Bank)</Text>
+                </Grid.Col>
+                <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+                  <Text>Rs. {orderDetails?.inspectionFee || 0}</Text>
+                </Grid.Col>
+              </>
+            )}
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Dealer Processing Fee</Text>
             </Grid.Col>
             <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Amount Financed (From Bank)</Text>
+              <Text>Rs. {orderDetails?.dealerProcessingFee || 0}</Text>
             </Grid.Col>
             <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.inspectionFee}</Text>
+              <Text>Dealer Center Fee</Text>
             </Grid.Col>
             <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Dealer Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.dealerFee}</Text>
+              <Text>Rs. {orderDetails?.dealerFee || 0}</Text>
             </Grid.Col>
           </>
         )}
