@@ -14,6 +14,7 @@ import Autoplay from "embla-carousel-autoplay";
 import { Loader } from "@mantine/core";
 import { useParams, useNavigate } from "react-router-dom";
 import Car360View from "../../components/3Dmodel";
+import { backendURL } from "../../AGMDCCOMPONENTS/apiCallHelpers/backendURL";
 
 const ViewCar = ({}) => {
   const params = useParams();
@@ -32,7 +33,7 @@ const ViewCar = ({}) => {
     };
 
     fetch(
-      `https://gmdc-server-production.up.railway.app/api/v1/vehicle/${params.vehicleId}`,
+      `${backendURL}/vehicle/${params.vehicleId}`,
       options
     )
       .then((response) => response.json())
@@ -208,6 +209,7 @@ const ViewCar = ({}) => {
             <div className="d-flex flex-column m-auto text-center gap-y-2 bmob">
               <h4>Found Your Dream Vehicle?</h4>
               <Button
+                disable={car.status === "sold" ? true : false}
                 onClick={() => navigate("/apply")}
                 title="Book Now"
                 fontSize={"30px"}

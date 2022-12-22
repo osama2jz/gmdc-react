@@ -10,10 +10,12 @@ const Button = ({
   fontSize,
   onClick,
   fontWeight = "nromal",
+  disable=false
 }) => {
   return (
     <button
       className="btn float-right but"
+      disabled={disable}
       onClick={onClick}
       style={{
         backgroundColor: primary ? "rgb(0, 97, 158)" : "white",

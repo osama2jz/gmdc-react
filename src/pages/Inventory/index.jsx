@@ -10,6 +10,7 @@ import DropDown from "../../components/DropDown";
 import { Checkbox, Loader } from "@mantine/core";
 import InventoryCard from "../../components/InventoryCard";
 import { useNavigate, useParams } from "react-router-dom";
+import { backendURL } from "../../AGMDCCOMPONENTS/apiCallHelpers/backendURL";
 
 const Inventory = () => {
   const navigate = useNavigate();
@@ -38,7 +39,7 @@ const Inventory = () => {
       };
 
       fetch(
-        `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=${page}&vehicleType=${params.filter.toLocaleLowerCase()}`,
+        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&vehicleType=${params.filter.toLocaleLowerCase()}`,
         options
       )
         .then((response) => response.json())
@@ -53,7 +54,7 @@ const Inventory = () => {
       };
 
       fetch(
-        `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=${page}&search=${params.search.toLocaleLowerCase()}`,
+        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&search=${params.search.toLocaleLowerCase()}`,
         options
       )
         .then((response) => response.json())
@@ -68,7 +69,7 @@ const Inventory = () => {
       };
 
       fetch(
-        `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=${page}`,
+        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}`,
         options
       )
         .then((response) => response.json())
@@ -87,7 +88,7 @@ const Inventory = () => {
     };
 
     fetch(
-      "https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles",
+      `${backendURL}/vehicle/allvehicles`,
       options
     )
       .then((response) => response.json())
@@ -100,8 +101,7 @@ const Inventory = () => {
   //apply filters
   const applyFilters = () => {
     setLoading(true);
-    let url =
-      "https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1";
+    let url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
     if (type) url = url + "&vehicleType=" + type.toLocaleLowerCase();
     if (search) url = url + "&search=" + search.toLocaleLowerCase();
     if (make) url = url + "&make=" + make.toLocaleLowerCase();
@@ -118,17 +118,7 @@ const Inventory = () => {
     const options = {
       method: "GET",
     };
-    fetch(
-      // `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1&vehicleType=${type.toLocaleLowerCase()}&search=${search}&make=${make}&transmission=${transmission.toString()}&fuelType=${engine.toString()}&minPrice=${
-      //   price.from
-      // }&maxPrice=${price.to}&minYear=${year.from}&maxYear=${
-      //   year.to
-      // }&minHorsePower=${hp.to}&maxHorsePower=${hp.from}&minMileage=${
-      //   mileage.from
-      // }&maxMileage=${mileage.to}`,
-      url,
-      options
-    )
+    fetch(url, options)
       .then((response) => response.json())
       .then((response) => {
         setCars((cars) => response.data.vehicles);
@@ -142,10 +132,10 @@ const Inventory = () => {
     setLoading(true);
     let url = "";
     if (search.length > 0)
-      url = `https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1&search=${search}`;
+      url = `${backendURL}/vehicle/allvehicles?limit=9&page=1&search=${search}`;
     else
       url =
-        "https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=9&page=1";
+        `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
     const options = {
       method: "GET",
     };
@@ -161,7 +151,7 @@ const Inventory = () => {
   //Clear Filters
 
   const clearFilters = () => {
-    navigate("/inventory")
+    navigate("/inventory");
     window.location.reload();
   };
 
@@ -188,7 +178,7 @@ const Inventory = () => {
             placeholder="Search Make, Model or keyword"
             onChange={(v) => setSearch(v.target.value)}
             style={{ width: "100vw", border: "none" }}
-            className='in'
+            className="in"
           />
           <Button onClick={applySearch} title={"GO"} primary={true} />
         </div>

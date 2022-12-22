@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<svg xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:svg="http://www.w3.org/2000/svg" id="svg2833" viewBox="0 0 64 64" version="1.1">
+  <title id="title4182">netalloy car</title>
+  <defs id="defs2835">
+    <linearGradient id="linearGradient2864" y2="31.791" gradientUnits="userSpaceOnUse" y1="24.527" x2="26.857" x1="26.475">
+      <stop id="stop2860" stop-color="#fce94f" offset="0"/>
+      <stop id="stop2862" stop-color="#fce94f" stop-opacity="0" offset="1"/>
+    </linearGradient>
+    <filter id="filter3648" y="-.55673" width="1.0788" x="-.039396" height="2.1135">
+      <feGaussianBlur id="feGaussianBlur3650" stdDeviation="0.84248789"/>
+    </filter>
+  </defs>
+  <g id="layer1">
+    <g id="g4184">
+      <path id="path2856" d="m7.1755 34.803s-1.5579-7.8246-0.97579-8.8634c1.3788-2.4607 4.6545 0.81057 7.3997 0.16263 0 0 7.6341-4.1967 12.116-4.0658 4.0717 0.11893 7.652 3.1359 11.709 3.4966 0 0 7.1685 0.4173 12.035 0.97579 2.2981 0.26376 5.9253 1.9285 7.6895 3.7782 1.0401 1.0905 1.9205 3.7089 1.0113 4.6787-16.356-1.213-38.933-2.022-50.984-0.162z" stroke="#2e2727" stroke-linecap="round" stroke-width="1.199" fill="url(#linearGradient2864)"/>
+      <path id="path3751" d="m225.26 479.1a64.145 55.053 0 1 1 -128.29 0 64.145 55.053 0 1 1 128.29 0z" transform="matrix(.080499 0 0 .080499 -.061632 -5.4313)" stroke="#fcfeff" stroke-width="14.9" fill="#555753"/>
+      <path id="path3753" d="m673.77 488.7a70.206 54.548 0 1 1 -140.41 0 70.206 54.548 0 1 1 140.41 0z" transform="matrix(.071671 0 0 .084752 5.6276 -8.4984)" stroke="#fcfeff" stroke-width="14.9" fill="#555753"/>
+      <path id="path2874" opacity=".20192" d="m57.059 39.724a25.662 1.8159 0 1 1 -51.324 0 25.662 1.8159 0 1 1 51.324 0z" filter="url(#filter3648)" stroke="#ada7a7" stroke-linecap="round" stroke-width=".6" fill="#999"/>
+      <rect id="rect3652" opacity="0" height="63.191" width="63.191" y=".40432" x=".40432" stroke-width=".80865"/>
+    </g>
+  </g>
+  <metadata>
+    <rdf:RDF>
+      <cc:Work>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/publicdomain/"/>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://openclipart.org/">
+            <dc:title>Openclipart</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:title>netalloy car logo</dc:title>
+        <dc:date>2010-04-07T09:13:44</dc:date>
+        <dc:description>automotive clipart</dc:description>
+        <dc:source>http://openclipart.org/detail/38755/netalloy-car-logo-by-netalloy</dc:source>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>netalloy</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>automobile</rdf:li>
+            <rdf:li>car</rdf:li>
+            <rdf:li>car logo</rdf:li>
+            <rdf:li>clip art</rdf:li>
+            <rdf:li>clipart</rdf:li>
+            <rdf:li>icon</rdf:li>
+            <rdf:li>motorsports</rdf:li>
+            <rdf:li>race</rdf:li>
+            <rdf:li>sports2010</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/publicdomain/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+</svg>

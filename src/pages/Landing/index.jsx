@@ -15,6 +15,7 @@ import MiniCarView from "../../components/MiniCarView";
 import InventoryCard from "../../components/InventoryCard";
 import { useNavigate } from "react-router-dom";
 import { Loader } from "@mantine/core";
+import { backendURL } from "../../AGMDCCOMPONENTS/apiCallHelpers/backendURL";
 
 const Landing = () => {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
@@ -27,10 +28,7 @@ const Landing = () => {
       method: "GET",
     };
 
-    fetch(
-      "https://gmdc-server-production.up.railway.app/api/v1/vehicle/allvehicles?limit=10&page=1",
-      options
-    )
+    fetch(`${backendURL}/vehicle/allvehicles?limit=10&page=1`, options)
       .then((response) => response.json())
       .then((response) => {
         console.log(response.data.vehicles);
@@ -70,28 +68,13 @@ const Landing = () => {
         <div className="carss">
           <div className="cars">
             <MiniCard title="Truck" icon="trucks" />
-            <MiniCard
-              title="Hatchback"
-              icon="hatchbacks"
-            />
-            <MiniCard
-              title="Sedan"
-              icon="sedan"
-            />
+            <MiniCard title="Hatchback" icon="hatchbacks" />
+            <MiniCard title="Sedan" icon="sedan" />
           </div>
           <div className="cars">
-            <MiniCard
-              title="Coupe"
-              icon="coupe"
-            />
-            <MiniCard
-              title="Electric"
-              icon="ev"
-            />
-            <MiniCard
-              title="SUV"
-              icon="suv"
-            />
+            <MiniCard title="Coupe" icon="coupe" />
+            <MiniCard title="Electric" icon="ev" />
+            <MiniCard title="SUV" icon="suv" />
           </div>
         </div>
       </div>
