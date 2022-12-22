@@ -227,7 +227,7 @@ const ViewUsers = ({ setCurrentLocation }) => {
       const apiResponse = await axios({
         headers: getHeader(),
         method: "GET",
-        url: `${backendURL}api/v1/user/all`,
+        url: `${backendURL}/user/all`,
       });
 
       console.log("API RESPONSE: ", apiResponse);
@@ -300,7 +300,7 @@ const ViewUsers = ({ setCurrentLocation }) => {
     axios({
       headers: getHeader(),
       method: "DELETE",
-      url: `${backendURL}api/v1/user/${id}`,
+      url: `${backendURL}/user/${id}`,
     })
       .then((res) => {
         if (res.data.success) {
@@ -427,7 +427,7 @@ const ViewUsers = ({ setCurrentLocation }) => {
     try {
       const response = await axios({
         method: "patch",
-        url: `${backendURL}api/v1/user/block/${id}`,
+        url: `${backendURL}/user/block/${id}`,
         data: body,
         headers: getHeader(),
       });

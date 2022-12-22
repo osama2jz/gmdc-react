@@ -37,6 +37,15 @@ const ViewCar = ({}) => {
       .catch((err) => console.error(err));
   }, []);
   // console.log(car);
+
+  const applyNow=()=>{
+    if(localStorage.getItem('userData')){
+      navigate("/apply")
+    }
+    else{
+      navigate("/login")
+    }
+  }
   return (
     <Page meta="PISES">
       {car.title ? (
@@ -205,7 +214,7 @@ const ViewCar = ({}) => {
               <h4>Found Your Dream Vehicle?</h4>
               <Button
                 disable={car.status === "sold" ? true : false}
-                onClick={() => navigate("/apply")}
+                onClick={applyNow}
                 title="Book Now"
                 fontSize={"30px"}
                 primary={true}

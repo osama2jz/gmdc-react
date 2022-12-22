@@ -50,11 +50,11 @@ const ForgotPassword = () => {
   const updatePasswordMethod = async (values) => {
     console.log(
       "URL",
-      `${backendURL}api/v1/auth/reset-password/${id}/${token}`
+      `${backendURL}/auth/reset-password/${id}/${token}`
     );
     try {
       const response = await axios.post(
-        `${backendURL}api/v1/auth/reset-password/${id}/${token}`,
+        `${backendURL}/auth/reset-password/${id}/${token}`,
         {
           password: values.newPassword,
         }

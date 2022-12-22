@@ -75,7 +75,7 @@ const EditProfile = () => {
     try {
       const res = await axios({
         method: "get",
-        url: `${backendURL}api/v1/user/me`,
+        url: `${backendURL}/user/me`,
         headers: getHeader(),
       });
       console.log("RES: ", res.data?.data);
@@ -299,7 +299,7 @@ const EditProfile = () => {
     try {
       const response = await axios({
         method: "put",
-        url: `${backendURL}api/v1/user/update_profile/${id}`,
+        url: `${backendURL}/user/update_profile/${id}`,
         data: body,
         headers: getHeader(),
       });

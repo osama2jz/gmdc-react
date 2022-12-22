@@ -65,7 +65,7 @@ const AddVehicle = ({ setCurrentLocation }) => {
   const fetchAllSellers = async () => {
     const res = await axios({
       method: 'get',
-      url: `${backendURL}api/v1/user/all_seller`,
+      url: `${backendURL}/user/all_seller`,
       headers: getHeader(),
     })
 
@@ -94,7 +94,7 @@ const AddVehicle = ({ setCurrentLocation }) => {
   const getVehicleDetails = async () => {
     setVisible(true)
 
-    const url = `${backendURL}api/v1/vehicle/${params.vehicleId}`
+    const url = `${backendURL}/vehicle/${params.vehicleId}`
 
     const res = await axios({
       method: 'get',
@@ -354,8 +354,8 @@ const AddVehicle = ({ setCurrentLocation }) => {
     try {
       setVisible(true)
       let url = params.vehicleId
-        ? `${backendURL}api/v1/vehicle/${params.vehicleId}`
-        : `${backendURL}api/v1/vehicle/add`
+        ? `${backendURL}/vehicle/${params.vehicleId}`
+        : `${backendURL}/vehicle/add`
       const response = await axios({
         method: params.vehicleId ? 'PUT' : 'POST',
         url: url,
@@ -411,7 +411,7 @@ const AddVehicle = ({ setCurrentLocation }) => {
 
   const getDataFromAPI = () => {
     setVisible(true)
-    axiosGet('api/v1/vehicle/vin/' + form.values.VIN).then(async (response) => {
+    axiosGet('/vehicle/vin/' + form.values.VIN).then(async (response) => {
       setVisible(false)
       console.log('API CALLED')
       let formBody = []

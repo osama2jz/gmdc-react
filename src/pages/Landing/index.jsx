@@ -31,7 +31,6 @@ const Landing = () => {
     fetch(`${backendURL}/vehicle/allvehicles?limit=10&page=1`, options)
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.data.vehicles);
         setCars((cars) => response.data.vehicles);
       })
       .catch((err) => console.error(err));

@@ -51,7 +51,7 @@ const Dashboard = () => {
     // setVisible(true);
     try {
       const dashboardStats = await // USERS
-      axiosGet("api/v1/user/stats");
+      axiosGet("/user/stats");
       setAllDashboardStats(dashboardStats.data.data);
       setAllUsersCount(
         allDashboardStats?.activeUsers + allDashboardStats?.blockedUsers || 0
