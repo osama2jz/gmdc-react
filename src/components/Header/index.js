@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { withTranslation } from "react-i18next";
+import { Navigate } from "react-router-dom";
 import routeNames from "../../routes/routeNames";
 import Button from "../Button";
 // import logo from "../../assets/logo.svg";
@@ -14,6 +15,7 @@ const Header = ({ t }) => {
     localStorage.setItem("userType", "");
     localStorage.clear();
     window.location.reload();
+    Navigate("/")
   };
 
   return (

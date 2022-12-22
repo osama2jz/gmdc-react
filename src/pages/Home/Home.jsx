@@ -325,7 +325,7 @@ const Home = ({ currentLocation }) => {
                                     localStorage.setItem("userToken", "");
                                     localStorage.setItem("userType", "");
                                     localStorage.clear();
-                                    navigate("/login");
+                                    navigate("/");
                                   }}
                                 >
                                   Logout

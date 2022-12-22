@@ -38,14 +38,13 @@ const ViewCar = ({}) => {
   }, []);
   // console.log(car);
 
-  const applyNow=()=>{
-    if(localStorage.getItem('userData')){
-      navigate("/apply")
+  const applyNow = () => {
+    if (!localStorage.getItem("userData")) {
+      navigate(`/login/redirect`);
+    } else {
+      navigate("/apply");
     }
-    else{
-      navigate("/login")
-    }
-  }
+  };
   return (
     <Page meta="PISES">
       {car.title ? (

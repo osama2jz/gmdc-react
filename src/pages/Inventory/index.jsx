@@ -337,12 +337,14 @@ const Inventory = () => {
                   No Data Found
                 </h2>
               )}
-          <Pagination
-            total={Math.ceil(count / 9)}
-            position="center"
-            className="mb-2 w-100"
-            onChange={(v) => setPage(v)}
-          />
+          {count > 9 && (
+            <Pagination
+              total={Math.ceil(count / 9)}
+              position="center"
+              className="mb-2 w-100"
+              onChange={(v) => setPage(v)}
+            />
+          )}
         </div>
       </div>
     </Page>

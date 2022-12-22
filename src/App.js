@@ -62,6 +62,7 @@ export default function App() {
           <Route path="/testingShah" element={<Car360View />} />
 
           <Route path="/login" element={<Login />} />
+          <Route path="/login/:redirect" element={<Login />} />
           <Route path="/:password-reset" element={<ForgotPassword />} />
           <Route path="/signup" element={<SignUp />} />
 
