@@ -90,7 +90,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       registrationFee: (value) =>
         value >= 0 ? null : "Registration Fee is Required",
 
-      licenseFee: (value) => (value >= 0 ? null : "GAP Fee is Required"),
+      licenseFee: (value) => (value >= 0 ? null : "GAP is Required"),
       warrantyFeeRadio: (value) =>
         value >= 0 ? null : "Warranty Fee is Required",
 
@@ -740,8 +740,8 @@ const AddOrder = ({ setCurrentLocation }) => {
                   required
                   min={0}
                   hideControls
-                  label="GAP Fee"
-                  placeholder="Enter GAP Fee"
+                  label="GAP"
+                  placeholder="Enter GAP"
                   {...form.getInputProps("licenseFee")}
                 />
               </Grid.Col>
@@ -831,7 +831,7 @@ const AddOrder = ({ setCurrentLocation }) => {
                   min={0}
                   hideControls
                   label="Total Price"
-                  description="Total Price = Vehicle Price + Sales Tax + Title Fee + Lean Fee + Registration Fee + GAP Fee + Freight Fee + Warranty Fee + Dealer Fee"
+                  description="Total Price = Vehicle Price + Sales Tax + Title Fee + Lean Fee + Registration Fee + GAP + Freight Fee + Warranty Fee + Dealer Fee"
                   {...form.getInputProps("totalPrice")}
                 />
               </Grid.Col>
