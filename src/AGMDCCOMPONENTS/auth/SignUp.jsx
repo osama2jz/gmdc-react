@@ -100,7 +100,7 @@ const SignUp = ({ setHookEmail, setHookPassword }) => {
           "Content-type": "multipart/form-data",
         },
         method: "post",
-        url: `${backendURL}api/v1/user/register`,
+        url: `${backendURL}/user/register`,
         data: form_data,
       });
       console.log("API RESPONSE", apiResponse);

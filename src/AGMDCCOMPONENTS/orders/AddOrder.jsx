@@ -171,7 +171,7 @@ const AddOrder = ({ setCurrentLocation }) => {
   const fetchAllCustomers = async () => {
     const res = await axios({
       method: "get",
-      url: `${backendURL}api/v1/user/all_customer`,
+      url: `${backendURL}/user/all_customer`,
       headers: getHeader(),
     });
     console.log("RES: ", res.data?.data?.users);
@@ -191,7 +191,7 @@ const AddOrder = ({ setCurrentLocation }) => {
     setVisible(true);
     const res = await axios({
       method: "get",
-      url: `${backendURL}api/v1/user/all_seller`,
+      url: `${backendURL}/user/all_seller`,
       headers: getHeader(),
     });
 
@@ -212,7 +212,7 @@ const AddOrder = ({ setCurrentLocation }) => {
 
     const res = await axios({
       method: "get",
-      url: `${backendURL}api/v1/vehicle/available`,
+      url: `${backendURL}/vehicle/available`,
       headers: getHeader(),
     });
 
@@ -242,7 +242,7 @@ const AddOrder = ({ setCurrentLocation }) => {
     form.setFieldValue("vehiclePrice", null);
     setVisible(true);
 
-    const url = `${backendURL}api/v1/order/getOrders`;
+    const url = `${backendURL}/order/getOrders`;
 
     const res = await axios({
       method: "get",
@@ -302,7 +302,7 @@ const AddOrder = ({ setCurrentLocation }) => {
   const getOrderDetails = async () => {
     setVisible(true);
 
-    const url = `${backendURL}api/v1/order/getOrder/${params.orderId}`;
+    const url = `${backendURL}/order/getOrder/${params.orderId}`;
 
     const res = await axios({
       method: "get",
@@ -401,9 +401,9 @@ const AddOrder = ({ setCurrentLocation }) => {
 
     let url;
     if (params.orderId) {
-      url = `${backendURL}api/v1/order/${params.orderId}`;
+      url = `${backendURL}/order/${params.orderId}`;
     } else {
-      url = `${backendURL}api/v1/order/add`;
+      url = `${backendURL}/order/add`;
     }
     try {
       console.log("PUT OR POST", params.orderId ? "put" : "post");

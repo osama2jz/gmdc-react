@@ -92,7 +92,7 @@ export default function CheckoutForm({
     } else {
       // The payment has been processed!
       setVisible(false);
-      axiosPost("api/v1/payment/add", {
+      axiosPost("/payment/add", {
         orderId: order?._id,
         paymentAmount:
           order.status === "new" ? order.downPayment : order?.vehiclePrice,

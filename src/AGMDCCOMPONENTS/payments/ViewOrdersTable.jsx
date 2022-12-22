@@ -204,7 +204,7 @@ const ViewPaymentsTable = ({ setCurrentLocation }) => {
       const apiResponse = await axios({
         headers: getHeader(),
         method: "GET",
-        url: `${backendURL}api/v1/payment/getAllPayments`,
+        url: `${backendURL}/payment/getAllPayments`,
       });
 
       console.log("API RESPONSE: ", apiResponse);

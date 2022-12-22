@@ -391,7 +391,7 @@ const ViewVehicles = ({ setCurrentLocation }) => {
       const apiResponse = await axios({
         headers: getHeader(),
         method: "GET",
-        url: `${backendURL}api/v1/vehicle/all`,
+        url: `${backendURL}/vehicle/all`,
       });
 
       console.log("API RESPONSE: ", apiResponse);
@@ -463,7 +463,7 @@ const ViewVehicles = ({ setCurrentLocation }) => {
   const confirmDelete = () => {
     setOpened(false);
     setVisible(true);
-    axiosDelete(`api/v1/vehicle/${id}`).then((res) => {
+    axiosDelete(`/vehicle/${id}`).then((res) => {
       if (res.data.success) {
         // console.log(res.data);
         setRefresh(true);

@@ -113,7 +113,7 @@ const AddUser = ({ setCurrentLocation }) => {
       console.log("IS UPDATE SCREEN");
       setCurrentLocation("Update User");
       //axios call and set hooks and set images url
-      let url = `${backendURL}api/v1/user/${params.userId}`;
+      let url = `${backendURL}/user/${params.userId}`;
       axios({
         method: "GET",
         url: url,
@@ -235,8 +235,8 @@ const AddUser = ({ setCurrentLocation }) => {
       // form_data.append("profileImage", profileImageURL?.[0]);
 
       let url = params?.userId
-        ? `${backendURL}api/v1/user/${params.userId}`
-        : `${backendURL}api/v1/user/add`;
+        ? `${backendURL}/user/${params.userId}`
+        : `${backendURL}/user/add`;
 
       console.log("URL", url);
       const apiResponse = await axios({

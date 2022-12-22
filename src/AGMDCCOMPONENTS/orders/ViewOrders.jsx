@@ -405,7 +405,7 @@ const ViewOrders = ({ hideStatus }) => {
   const fetchAllOrders = async () => {
     const res = await axios({
       method: "get",
-      url: `${backendURL}api/v1/order/getOrders`,
+      url: `${backendURL}/order/getOrders`,
       headers: getHeader(),
     });
     console.log("RES: ", res.data?.data);
@@ -486,7 +486,7 @@ const ViewOrders = ({ hideStatus }) => {
     setVisible(true);
     const res = await axios({
       method: "delete",
-      url: `${backendURL}api/v1/order/${id}`,
+      url: `${backendURL}/order/${id}`,
       headers: getHeader(),
     });
 
@@ -573,7 +573,7 @@ const ViewOrders = ({ hideStatus }) => {
     try {
       const response = await axios({
         method: "patch",
-        url: `${backendURL}api/v1/order/updateStatus/${id}`,
+        url: `${backendURL}/order/updateStatus/${id}`,
         data: body,
         headers: getHeader(),
       });
@@ -653,7 +653,7 @@ const ViewOrders = ({ hideStatus }) => {
     console.log("ye to body hai", body);
 
     try {
-      let url = `${backendURL}api/v1/order/${orderId}`;
+      let url = `${backendURL}/order/${orderId}`;
 
       const response = await axios({
         method: "put",
@@ -1369,7 +1369,7 @@ const ViewOrders = ({ hideStatus }) => {
                                       console.log("LAUNCHING PAYMENT");
                                       try {
                                         let apiResponse = await axiosPost(
-                                          "api/v1/payment/payment-intent",
+                                          "/payment/payment-intent",
                                           {
                                             orderId: row?._id,
                                           }

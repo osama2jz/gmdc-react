@@ -53,7 +53,7 @@ export default function AddPayment() {
 
   const getDataFromApis = async () => {
     try {
-      const [orders] = await Promise.all([axiosGet("api/v1/order/getOrders")]);
+      const [orders] = await Promise.all([axiosGet("/order/getOrders")]);
       console.log("ORDERS", orders);
 
       setOrders(orders.data.data.orders);
@@ -349,7 +349,7 @@ export default function AddPayment() {
                       setButtonLoader(true);
                       try {
                         let apiResponse = await axiosPost(
-                          "api/v1/payment/payment-intent",
+                          "/payment/payment-intent",
                           {
                             orderId: selectedOrder,
                           }
