@@ -207,7 +207,9 @@ const ViewCar = ({}) => {
                 }}
               ></div>
               <h3>Vehicle Details</h3>
-              <p>{car.description}</p>
+              <p style={{ wordBreak: "break-word", whiteSpace: "normal" }}>
+                {car.description}
+              </p>
             </div>
             <div className="d-flex flex-column m-auto text-center gap-y-2 bmob">
               <h4>Found Your Dream Vehicle?</h4>

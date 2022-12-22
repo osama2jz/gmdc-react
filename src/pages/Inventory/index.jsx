@@ -48,13 +48,15 @@ const Inventory = () => {
           setLoading(false);
         })
         .catch((err) => console.error(err));
-    } else if (params.search) {
+    } else if (params.search || search) {
       const options = {
         method: "GET",
       };
 
       fetch(
-        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&search=${params.search.toLocaleLowerCase()}`,
+        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&search=${
+          params.search?.toLocaleLowerCase() || search
+        }`,
         options
       )
         .then((response) => response.json())
@@ -77,6 +79,8 @@ const Inventory = () => {
         .catch((err) => console.error(err));
     }
   }, [page]);
+  const [allCars, setAllCars] = useState([]);
+  // console.log("allCars", allCars);
 
   //for pagination
   useEffect(() => {
@@ -88,14 +92,18 @@ const Inventory = () => {
       .then((response) => response.json())
       .then((response) => {
         setCount((count) => response.data.count);
+        setAllCars(response.data.vehicles);
       })
       .catch((err) => console.error(err));
   }, []);
+  // useEffect(() => {
+
+  // }, [search]);
 
   //apply filters
   const applyFilters = () => {
     setLoading(true);
-    let url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
+    let url = `${backendURL}/vehicle/allvehicles?limit=9&page=${page}`;
     if (type) url = url + "&vehicleType=" + type.toLocaleLowerCase();
     if (search) url = url + "&search=" + search.toLocaleLowerCase();
     if (make) url = url + "&make=" + make.toLocaleLowerCase();
@@ -123,21 +131,33 @@ const Inventory = () => {
 
   //search
   const applySearch = () => {
+    setPage(1);
     setLoading(true);
     let url = "";
-    if (search.length > 0)
-      url = `${backendURL}/vehicle/allvehicles?limit=9&page=1&search=${search}`;
-    else url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
+    if (search?.length > 0)
+      url = `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&search=${search}`;
+    else {
+      url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
+    }
     const options = {
       method: "GET",
     };
     fetch(url, options)
       .then((response) => response.json())
       .then((response) => {
+        // console.log("response", response.headers["total-Records"])
         setCars((cars) => response.data.vehicles);
         setLoading(false);
       })
       .catch((err) => console.error(err));
+    if (search.lenth > 0) {
+      let newCount = allCars?.filter(
+        (e) =>
+          e?.vin?.toLocaleLowerCase()?.includes(search?.toLocaleLowerCase()) ||
+          e?.title?.toLocaleLowerCase()?.includes(search?.toLocaleLowerCase())
+      );
+      setCount(newCount.length);
+    }
   };
 
   //Clear Filters
@@ -342,6 +362,7 @@ const Inventory = () => {
               total={Math.ceil(count / 9)}
               position="center"
               className="mb-2 w-100"
+              page={page}
               onChange={(v) => setPage(v)}
             />
           )}
