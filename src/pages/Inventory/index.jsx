@@ -28,7 +28,7 @@ const Inventory = () => {
   const [price, setPrice] = useState({ from: undefined, to: undefined });
   const [transmission, setTransmission] = useState([]);
   const [mileage, setMileage] = useState({ from: undefined, to: undefined });
-  const [hp, setHp] = useState({ from: undefined, to: undefined });
+  // const [hp, setHp] = useState({ from: undefined, to: undefined });
   const [engine, setEngine] = useState([]);
 
   useEffect(() => {
@@ -68,10 +68,7 @@ const Inventory = () => {
         method: "GET",
       };
 
-      fetch(
-        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}`,
-        options
-      )
+      fetch(`${backendURL}/vehicle/allvehicles?limit=9&page=${page}`, options)
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
@@ -87,10 +84,7 @@ const Inventory = () => {
       method: "GET",
     };
 
-    fetch(
-      `${backendURL}/vehicle/allvehicles`,
-      options
-    )
+    fetch(`${backendURL}/vehicle/allvehicles`, options)
       .then((response) => response.json())
       .then((response) => {
         setCount((count) => response.data.count);
@@ -133,9 +127,7 @@ const Inventory = () => {
     let url = "";
     if (search.length > 0)
       url = `${backendURL}/vehicle/allvehicles?limit=9&page=1&search=${search}`;
-    else
-      url =
-        `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
+    else url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
     const options = {
       method: "GET",
     };
@@ -257,13 +249,13 @@ const Inventory = () => {
             <InputField
               title="From"
               type="number"
-              onChange={(v) => setModel({ ...model, from: v.target.value })}
+              onChange={(v) => setyear({ ...year, from: v.target.value })}
             />
             <p className="mx-3 my-0">-</p>
             <InputField
               title="To"
               type="number"
-              onChange={(v) => setModel({ ...model, to: v.target.value })}
+              onChange={(v) => setyear({ ...year, to: v.target.value })}
             />
           </div>
           <h6 className="mt-3 ">Mileage</h6>
@@ -280,7 +272,7 @@ const Inventory = () => {
               onChange={(v) => setMileage({ ...mileage, to: v.target.value })}
             />
           </div>
-          <h6 className="mt-3">Horsepower</h6>
+          {/* <h6 className="mt-3">Horsepower</h6>
           <div className="d-flex align-items-center">
             <InputField
               title="From"
@@ -293,7 +285,7 @@ const Inventory = () => {
               type="number"
               onChange={(v) => setHp({ ...hp, to: v.target.value })}
             />
-          </div>
+          </div> */}
           <div
             style={{
               width: "100%",

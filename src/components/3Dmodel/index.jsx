@@ -8,13 +8,14 @@ const Car360View = (props) => {
   const amount = props.amount || 72;
   // const basePath = "https://res.cloudinary.com/amazon-virtual-assistant-chatbot/image/upload/v1671623493/GMDCAR/image360/1GYS4CKJ5FR205609";
   return (
-    <div className="mb-2 p-0">
+    <div className="card mt-2">
       <div className="v360-header text-light bg-dark">
         <span className="v360-header-title">360 View</span>
         <span className="v360-header-description"></span>
       </div>
 
       <React360Viewer
+        className="card-body"
         amount={amount}
         imagePath={basePath}
         fileName={

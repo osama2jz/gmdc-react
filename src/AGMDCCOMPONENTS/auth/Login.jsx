@@ -75,7 +75,7 @@ const Login = ({ email, password }) => {
     try {
       const apiResponse = await axios({
         method: "post",
-        url: `${backendURL}api/v1/auth`,
+        url: `${backendURL}/auth`,
         data: {
           email: email,
           password: password,
@@ -180,7 +180,7 @@ const Login = ({ email, password }) => {
     setForgotPasswordSendEmailButton(true);
     try {
       const response = await axios.post(
-        `${backendURL}api/v1/auth/forget-password`,
+        `${backendURL}/auth/forget-password`,
         { email: values.forgotPasswordEmail }
       );
       console.log("RESPONSE: ", response);

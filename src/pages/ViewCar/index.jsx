@@ -11,7 +11,7 @@ import vinn from "../../assets/vin.svg";
 import "./styles.scss";
 import { Carousel } from "@mantine/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import { Loader } from "@mantine/core";
+import { Grid, Loader } from "@mantine/core";
 import { useParams, useNavigate } from "react-router-dom";
 import Car360View from "../../components/3Dmodel";
 import { backendURL } from "../../AGMDCCOMPONENTS/apiCallHelpers/backendURL";
@@ -26,16 +26,9 @@ const ViewCar = ({}) => {
   useEffect(() => {
     const options = {
       method: "GET",
-      headers: {
-        authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOWE4OWY0YjM4NmRhZmQwMjU3NzYxOSIsInJvbGUiOiJhZG1pbiIsImFkbWluIjp0cnVlLCJzdGF0dXMiOjEsImlhdCI6MTY3MTUzNTUyNywiZXhwIjoxNjc0MTI3NTI3fQ.8AVWFOxDbc1llTwDASK6U4uPQg1xgw-26rGziFVGroc",
-      },
     };
 
-    fetch(
-      `${backendURL}/vehicle/${params.vehicleId}`,
-      options
-    )
+    fetch(`${backendURL}/vehicle/allvehicles/${params.vehicleId}`, options)
       .then((response) => response.json())
       .then((response) => {
         setCar((car) => response.data);
@@ -75,10 +68,12 @@ const ViewCar = ({}) => {
             )}
           </Carousel>
           {car.image360 && (
-            <Car360View
-              basePath={car.image360?.basePath}
-              amount={car.image360?.amount}
-            />
+            <Grid>
+              <Car360View
+                basePath={car.image360?.basePath}
+                amount={car.image360?.amount}
+              />
+            </Grid>
           )}
           <div
             className="d-flex p-3 justify-content-between my-4 rounded"
@@ -190,10 +185,10 @@ const ViewCar = ({}) => {
                 <img src={tire} style={{ width: "20px" }} className="mr-2" />
                 {car.engine}
               </h6>
-              <h6 className="col d-flex mt-3 align-items-center">
+              {/* <h6 className="col d-flex mt-3 align-items-center">
                 <img src={tire} style={{ width: "20px" }} className="mr-2" />
                 {car.horsePower}hp
-              </h6>
+              </h6> */}
 
               <div
                 className="mt-4 mb-2 des"

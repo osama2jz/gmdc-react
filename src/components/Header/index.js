@@ -111,14 +111,14 @@ const Header = ({ t }) => {
             </ul>
           </div>
 
-          <div className="d-flex gap-3 buttonss">
+          {!localStorage.getItem('userData') && <div className="d-flex gap-3 buttonss">
             <a href={routeNames.general.login}>
               <Button title={'Signin'} primary={true} />
             </a>
             <a href={routeNames.general.signup}>
               <Button title={'Signup'} primary={true} />
             </a>
-          </div>
+          </div>}
         </nav>
       </div>
     </div>

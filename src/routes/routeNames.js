@@ -1,7 +1,7 @@
 const routeNames = {
   general: {
     landing: '/',
-    dashboard: '/dashboard',
+    dashboard: '/customer',
     inventory: '/inventory',
     inventory2: '/inventory/:filter',
     inventory3: '/inventory/s/:search',
