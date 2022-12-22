@@ -9,12 +9,13 @@ import InputField from "../../components/InputField";
 import DropDown from "../../components/DropDown";
 import { Checkbox, Loader } from "@mantine/core";
 import InventoryCard from "../../components/InventoryCard";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { backendURL } from "../../AGMDCCOMPONENTS/apiCallHelpers/backendURL";
 
 const Inventory = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const location = useLocation();
 
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState();
@@ -131,6 +132,9 @@ const Inventory = () => {
 
   //search
   const applySearch = () => {
+    if(location.pathname !== "/inventory"){
+      navigate("/inventory")
+    }
     setPage(1);
     setLoading(true);
     let url = "";
@@ -150,7 +154,7 @@ const Inventory = () => {
         setLoading(false);
       })
       .catch((err) => console.error(err));
-    if (search.lenth > 0) {
+    if (search?.length > 0) {
       let newCount = allCars?.filter(
         (e) =>
           e?.vin?.toLocaleLowerCase()?.includes(search?.toLocaleLowerCase()) ||

@@ -50,7 +50,7 @@ const ViewCar = ({}) => {
       {car.title ? (
         <>
           <Carousel
-            align="center"
+            align={car.assets.length == 1 ? "center" : "start"}
             plugins={[autoplay.current]}
             onMouseEnter={autoplay.current.stop}
             onMouseLeave={autoplay.current.reset}
