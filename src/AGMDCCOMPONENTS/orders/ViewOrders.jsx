@@ -167,7 +167,7 @@ const ViewOrders = ({ hideStatus }) => {
         id: "Actions",
         numeric: false,
         disablePadding: false,
-        label: "actions",
+        label: "Actions",
         sort: false,
       },
     ];
@@ -328,7 +328,7 @@ const ViewOrders = ({ hideStatus }) => {
         id: "Actions",
         numeric: false,
         disablePadding: false,
-        label: "actions",
+        label: "Actions",
         sort: false,
       },
     ];
@@ -719,27 +719,7 @@ const ViewOrders = ({ hideStatus }) => {
           overlayOpacity={0.5}
           overlayColor="#c5c5c5"
         />
-        <Modal
-          title={<Title order={2}>Complete Payment</Title>}
-          size={"lg"}
-          radius="sm"
-          overlayOpacity={0.55}
-          overlayBlur={3}
-          opened={viewPaymentModal}
-          onClose={() => setViewPaymentModal(false)}
-        >
-          <Paper withBorder p={"md"}>
-            {clientSecret && (
-              <Elements options={options} stripe={stripePromise}>
-                <CheckoutForm
-                  selectedOrder={[amountPayable]}
-                  setViewPaymentModal={setViewPaymentModal}
-                  viewOrder={true}
-                />
-              </Elements>
-            )}
-          </Paper>
-        </Modal>
+
         <Modal
           overlayColor={
             theme.colorScheme === "dark"
@@ -979,7 +959,27 @@ const ViewOrders = ({ hideStatus }) => {
             </div>
           </div>
         </Paper>
-
+        <Modal
+          title={<Title order={2}>Complete Payment</Title>}
+          size={"lg"}
+          radius="sm"
+          overlayOpacity={0.55}
+          overlayBlur={3}
+          opened={viewPaymentModal}
+          onClose={() => setViewPaymentModal(false)}
+        >
+          <Paper withBorder p={"md"}>
+            {clientSecret && (
+              <Elements options={options} stripe={stripePromise}>
+                <CheckoutForm
+                  selectedOrder={[amountPayable]}
+                  setViewPaymentModal={setViewPaymentModal}
+                  viewOrder={true}
+                />
+              </Elements>
+            )}
+          </Paper>
+        </Modal>
         <Modal
           styles={{
             close: {
@@ -1079,7 +1079,16 @@ const ViewOrders = ({ hideStatus }) => {
                       )
                       ?.map((row, index) => {
                         return (
-                          <TableRow key={index}>
+                          <TableRow
+                            key={index}
+                            onClick={() => {
+                              console.log("View vehical");
+                              if (userType() === "customer") {
+                                setOrderDetails(row);
+                                setViewOrdersModal(true);
+                              }
+                            }}
+                          >
                             <TableCell component="th" scope="row">
                               {row?.SR}
                             </TableCell>
@@ -1134,6 +1143,7 @@ const ViewOrders = ({ hideStatus }) => {
                               <TableCell align="left">
                                 {row?.status === "new" ? (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1170,6 +1180,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   </Menu>
                                 ) : row?.status === "dp_paid" ? (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1190,6 +1201,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   </Menu>
                                 ) : row?.status === "processed" ? (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1228,6 +1240,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   </Menu>
                                 ) : row.status === "completed" ? (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1248,6 +1261,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   </Menu>
                                 ) : (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1273,6 +1287,7 @@ const ViewOrders = ({ hideStatus }) => {
                               <TableCell align="left">
                                 {row?.status === "processed" ? (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1293,6 +1308,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   </Menu>
                                 ) : row.status === "completed" ? (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1313,6 +1329,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   </Menu>
                                 ) : row.status === "cancelled" ? (
                                   <Menu
+                                    zIndex={1000}
                                     align="center"
                                     offset={2}
                                     width="target"
@@ -1337,6 +1354,9 @@ const ViewOrders = ({ hideStatus }) => {
 
                             <TableCell>
                               <SimpleGrid
+                                style={{
+                                  zIndex: 1000,
+                                }}
                                 cols={
                                   userType() === "admin"
                                     ? 4
@@ -1393,6 +1413,7 @@ const ViewOrders = ({ hideStatus }) => {
                                       } catch (e) {
                                         console.log("error");
                                       }
+                                      // setViewOrdersModal(false);
                                       setViewPaymentModal(true);
                                       setAmountPayable(row);
                                     }}
