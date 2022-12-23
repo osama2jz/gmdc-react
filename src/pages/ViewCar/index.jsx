@@ -38,20 +38,19 @@ const ViewCar = ({}) => {
   }, []);
   // console.log(car);
 
-  const applyNow=()=>{
-    if(localStorage.getItem('userData')){
-      navigate("/apply")
+  const applyNow = () => {
+    if (!localStorage.getItem("userData")) {
+      navigate(`/login/redirect`);
+    } else {
+      navigate("/apply");
     }
-    else{
-      navigate("/login")
-    }
-  }
+  };
   return (
     <Page meta="PISES">
       {car.title ? (
         <>
           <Carousel
-            align="center"
+            align={car.assets.length == 1 ? "center" : "start"}
             plugins={[autoplay.current]}
             onMouseEnter={autoplay.current.stop}
             onMouseLeave={autoplay.current.reset}
@@ -208,7 +207,9 @@ const ViewCar = ({}) => {
                 }}
               ></div>
               <h3>Vehicle Details</h3>
-              <p>{car.description}</p>
+              <p style={{ wordBreak: "break-word", whiteSpace: "normal" }}>
+                {car.description}
+              </p>
             </div>
             <div className="d-flex flex-column m-auto text-center gap-y-2 bmob">
               <h4>Found Your Dream Vehicle?</h4>

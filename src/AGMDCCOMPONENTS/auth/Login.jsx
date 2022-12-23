@@ -2,7 +2,7 @@
 import { Center, Image, Modal, Stack, Title } from "@mantine/core";
 
 import { At, Key } from "tabler-icons-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
 // import signupBGimage from "./customerIMG.svg";
 import { useForm } from "@mantine/form";
@@ -34,6 +34,7 @@ import { backendURL } from "../apiCallHelpers/backendURL";
 import { useMediaQuery } from "@mantine/hooks";
 // NAVIGATION
 const Login = ({ email, password }) => {
+  const params = useParams();
   const [forgotPasswordModal, setForgotPasswordModal] = useState(false);
   const [forgotPasswordSendEmailButton, setForgotPasswordSendEmailButton] =
     useState(false);
@@ -104,7 +105,9 @@ const Login = ({ email, password }) => {
           setVisible(false);
         } else if (response.role === "customer") {
           localStorage.setItem("userData", JSON.stringify(response));
-          navigate("/customer/");
+          params.redirect === "redirect"
+            ? navigate("/apply")
+            : navigate("/customer/");
           showNotification({
             title: "SUCCESS",
             color: "green",
@@ -179,10 +182,9 @@ const Login = ({ email, password }) => {
   const forPasswordStep1 = async (values) => {
     setForgotPasswordSendEmailButton(true);
     try {
-      const response = await axios.post(
-        `${backendURL}/auth/forget-password`,
-        { email: values.forgotPasswordEmail }
-      );
+      const response = await axios.post(`${backendURL}/auth/forget-password`, {
+        email: values.forgotPasswordEmail,
+      });
       console.log("RESPONSE: ", response);
       console.log("RESPONSE.data: ", response.data);
       if (response.data.success) {

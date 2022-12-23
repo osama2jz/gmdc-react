@@ -9,12 +9,13 @@ import InputField from "../../components/InputField";
 import DropDown from "../../components/DropDown";
 import { Checkbox, Loader } from "@mantine/core";
 import InventoryCard from "../../components/InventoryCard";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { backendURL } from "../../AGMDCCOMPONENTS/apiCallHelpers/backendURL";
 
 const Inventory = () => {
   const navigate = useNavigate();
   const params = useParams();
+  const location = useLocation();
 
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState();
@@ -28,7 +29,6 @@ const Inventory = () => {
   const [price, setPrice] = useState({ from: undefined, to: undefined });
   const [transmission, setTransmission] = useState([]);
   const [mileage, setMileage] = useState({ from: undefined, to: undefined });
-  // const [hp, setHp] = useState({ from: undefined, to: undefined });
   const [engine, setEngine] = useState([]);
 
   useEffect(() => {
@@ -45,21 +45,25 @@ const Inventory = () => {
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setCount(response.data.totalVehicles);
           setLoading(false);
         })
         .catch((err) => console.error(err));
-    } else if (params.search) {
+    } else if (params.search || search) {
       const options = {
         method: "GET",
       };
 
       fetch(
-        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&search=${params.search.toLocaleLowerCase()}`,
+        `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&search=${
+          params.search?.toLocaleLowerCase() || search
+        }`,
         options
       )
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setCount(response.data.totalVehicles);
           setLoading(false);
         })
         .catch((err) => console.error(err));
@@ -72,30 +76,17 @@ const Inventory = () => {
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setCount(response.data.totalVehicles);
           setLoading(false);
         })
         .catch((err) => console.error(err));
     }
   }, [page]);
 
-  //for pagination
-  useEffect(() => {
-    const options = {
-      method: "GET",
-    };
-
-    fetch(`${backendURL}/vehicle/allvehicles`, options)
-      .then((response) => response.json())
-      .then((response) => {
-        setCount((count) => response.data.count);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
   //apply filters
   const applyFilters = () => {
     setLoading(true);
-    let url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
+    let url = `${backendURL}/vehicle/allvehicles?limit=9&page=${page}`;
     if (type) url = url + "&vehicleType=" + type.toLocaleLowerCase();
     if (search) url = url + "&search=" + search.toLocaleLowerCase();
     if (make) url = url + "&make=" + make.toLocaleLowerCase();
@@ -116,6 +107,7 @@ const Inventory = () => {
       .then((response) => response.json())
       .then((response) => {
         setCars((cars) => response.data.vehicles);
+        setCount(response.data.totalVehicles);
         setLoading(false);
       })
       .catch((err) => console.error(err));
@@ -123,11 +115,17 @@ const Inventory = () => {
 
   //search
   const applySearch = () => {
+    if (location.pathname !== "/inventory") {
+      navigate("/inventory");
+    }
+    setPage(1);
     setLoading(true);
     let url = "";
-    if (search.length > 0)
-      url = `${backendURL}/vehicle/allvehicles?limit=9&page=1&search=${search}`;
-    else url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
+    if (search?.length > 0)
+      url = `${backendURL}/vehicle/allvehicles?limit=9&page=${page}&search=${search}`;
+    else {
+      url = `${backendURL}/vehicle/allvehicles?limit=9&page=1`;
+    }
     const options = {
       method: "GET",
     };
@@ -135,6 +133,7 @@ const Inventory = () => {
       .then((response) => response.json())
       .then((response) => {
         setCars((cars) => response.data.vehicles);
+        setCount(response.data.totalVehicles);
         setLoading(false);
       })
       .catch((err) => console.error(err));
@@ -272,20 +271,6 @@ const Inventory = () => {
               onChange={(v) => setMileage({ ...mileage, to: v.target.value })}
             />
           </div>
-          {/* <h6 className="mt-3">Horsepower</h6>
-          <div className="d-flex align-items-center">
-            <InputField
-              title="From"
-              type="number"
-              onChange={(v) => setHp({ ...hp, from: v.target.value })}
-            />
-            <p className="mx-3 my-0">-</p>
-            <InputField
-              title="To"
-              type="number"
-              onChange={(v) => setHp({ ...hp, to: v.target.value })}
-            />
-          </div> */}
           <div
             style={{
               width: "100%",
@@ -337,12 +322,15 @@ const Inventory = () => {
                   No Data Found
                 </h2>
               )}
-          <Pagination
-            total={Math.ceil(count / 9)}
-            position="center"
-            className="mb-2 w-100"
-            onChange={(v) => setPage(v)}
-          />
+          {count > 9 && (
+            <Pagination
+              total={Math.ceil(count / 9)}
+              position="center"
+              className="mb-2 w-100"
+              page={page}
+              onChange={(v) => setPage(v)}
+            />
+          )}
         </div>
       </div>
     </Page>
