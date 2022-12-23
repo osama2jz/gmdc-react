@@ -253,9 +253,10 @@ const AddUser = ({ setCurrentLocation }) => {
       if (true) {
         showNotification({
           color: "green",
-          title: "SUCCESSFULLY SIGNED UP",
-          message:
-            "You have successfully signed up, we are redirecting you to the sign in page",
+          title: "Success",
+          message: params?.userId
+            ? "User Added Successfully"
+            : "User Updated Successfully",
         });
         navigate("/admin/viewusers");
       }
