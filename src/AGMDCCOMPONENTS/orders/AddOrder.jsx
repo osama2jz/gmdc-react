@@ -436,7 +436,7 @@ const AddOrder = ({ setCurrentLocation }) => {
           message: `ORDER PLACED SUCCESSFULLY!!`,
         });
         setVisible(false);
-        navigate("/admin/viewOrder");
+        navigate("/user/viewOrder");
       }
     } catch (err) {
       showNotification({
@@ -616,7 +616,7 @@ const AddOrder = ({ setCurrentLocation }) => {
                   align="center"
                   color="red"
                   leftIcon={<Trash size={14} />}
-                  onClick={() => navigate("/admin/viewOrder")}
+                  onClick={() => navigate("/user/viewOrder")}
                 >
                   Yes, Cancel
                 </Button>

@@ -88,7 +88,7 @@ const Login = ({ email, password }) => {
         const response = apiResponse.data.data;
         if (response.role === "admin") {
           localStorage.setItem("userData", JSON.stringify(response));
-          navigate("/admin");
+          navigate("/user");
           showNotification({
             title: "SUCCESS",
             color: "green",
@@ -96,7 +96,7 @@ const Login = ({ email, password }) => {
           });
         } else if (response.role === "seller") {
           localStorage.setItem("userData", JSON.stringify(response));
-          navigate("/seller");
+          navigate("/user");
           showNotification({
             title: "SUCCESS",
             color: "green",

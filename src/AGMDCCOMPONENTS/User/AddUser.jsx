@@ -134,7 +134,7 @@ const AddUser = ({ setCurrentLocation }) => {
       });
     } else {
       console.log("IS ADD SCREEN");
-      // navigate("/admin/adduser");
+      // navigate("/user/adduser");
       setCurrentLocation("Add User");
     }
   }, []);
@@ -258,7 +258,7 @@ const AddUser = ({ setCurrentLocation }) => {
             ? "User Added Successfully"
             : "User Updated Successfully",
         });
-        navigate("/admin/viewusers");
+        navigate("/user/viewusers");
       }
     } catch (e) {
       console.log("ERROR", e);

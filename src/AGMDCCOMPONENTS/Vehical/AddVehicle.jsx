@@ -148,7 +148,7 @@ const AddVehicle = ({ setCurrentLocation }) => {
       getVehicleDetails()
     } else {
       console.log('IS ADD SCREEN')
-      navigate('/admin/addVehicle')
+      navigate('/user/addVehicle')
     }
   }, [])
 
@@ -372,7 +372,7 @@ const AddVehicle = ({ setCurrentLocation }) => {
           message: 'Vehicle Added Successfully',
           color: 'green',
         })
-        navigate('/seller/viewvehicals')
+        navigate('/user/viewvehicals')
       } else {
         showNotification({
           title: 'Error',

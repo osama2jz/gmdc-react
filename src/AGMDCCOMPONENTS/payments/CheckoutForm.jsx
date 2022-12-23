@@ -107,7 +107,7 @@ export default function CheckoutForm({
       if (viewOrder) {
         setViewPaymentModal(false);
       } else {
-        navigate("/admin/viewPayments");
+        navigate("/user/viewPayments");
       }
     }
     setIsLoading(false);

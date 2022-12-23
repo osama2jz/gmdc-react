@@ -163,7 +163,7 @@ export default function AddPayment() {
               align="center"
               color="red"
               leftIcon={<Trash size={14} />}
-              onClick={() => navigate("/admin/viewPayments")}
+              onClick={() => navigate("/user/viewPayments")}
             >
               Yes, Cancel
             </Button>

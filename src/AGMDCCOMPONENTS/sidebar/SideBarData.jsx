@@ -21,7 +21,7 @@ import {
 export const SideBarData = [
   {
     title: "1 - Dashboard",
-    path: "/admin/",
+    path: "/user/",
     icon: <Layout2 size={21} />,
   },
   {
@@ -33,13 +33,13 @@ export const SideBarData = [
     subNav: [
       {
         title: "2.1 - Add User",
-        path: "/admin/adduser",
+        path: "/user/adduser",
         icon: <UserPlus size={20} />,
         cName: "sub-nav",
       },
       {
         title: "2.2 - View All Users",
-        path: "/admin/viewusers",
+        path: "/user/viewusers",
         icon: <Users size={20} />,
         cName: "sub-nav",
       },
@@ -55,13 +55,13 @@ export const SideBarData = [
     subNav: [
       {
         title: "3.1 - Add Vehicle",
-        path: "/admin/addvehicle",
+        path: "/user/addvehicle",
         icon: <Plus />,
         cName: "sub-nav",
       },
       {
         title: "3.2 - View All Vehicles",
-        path: "/admin/viewvehicals",
+        path: "/user/viewvehicals",
         icon: <Eye />,
         cName: "sub-nav",
       },
@@ -78,25 +78,25 @@ export const SideBarData = [
     subNav: [
       {
         title: "4.1 - Add Order",
-        path: "/admin/addOrder",
+        path: "/user/addOrder",
         icon: <Plus size={20} />,
         cName: "sub-nav",
       },
       {
         title: "4.2 - View Orders",
-        path: "/admin/viewOrder",
+        path: "/user/viewOrder",
         icon: <Eye size={20} />,
         cName: "sub-nav",
       },
       // {
       //   title: "4.3 - View Paid Orders",
-      //   path: "/admin/viewPaidOrders",
+      //   path: "/user/viewPaidOrders",
       //   icon: <BuildingCommunity size={20} />,
       //   cName: "sub-nav",
       // },
       // {
       //   title: "4.4 - View Processed Orders",
-      //   path: "/admin/viewProcessedOrders",
+      //   path: "/user/viewProcessedOrders",
       //   icon: <BuildingCommunity size={20} />,
       //   cName: "sub-nav",
       // },
@@ -112,38 +112,38 @@ export const SideBarData = [
     subNav: [
       {
         title: "5.1 - Add Payment",
-        path: "/admin/addPayment",
+        path: "/user/addPayment",
         icon: <Plus size={20} />,
       },
 
       {
         title: "5.2 - View Payments",
-        path: "/admin/viewPayments",
+        path: "/user/viewPayments",
         icon: <Eye size={20} />,
       },
       // {
       //   title: "5.3 - View Paid Payments",
-      //   path: "/admin/viewPaidPayments",
+      //   path: "/user/viewPaidPayments",
       //   icon: <Eye size={20} />,
       // },
     ],
   },
   {
     title: "6 - Settings",
-    path: "/admin/editProfile",
+    path: "/user/editProfile",
     icon: <Settings size={21} />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     // subNav: [
     //   {
     //     title: "6.1 - Add Vendor Categories",
-    //     path: "/admin/addVendorCategory",
+    //     path: "/user/addVendorCategory",
     //     icon: <Plus size={20} />,
     //     cName: "sub-nav",
     //   },
     //   {
     //     title: "6.2 - View Vendor Categories",
-    //     path: "/admin/vendorCategories",
+    //     path: "/user/vendorCategories",
     //     icon: <Eye size={20} />,
     //     cName: "sub-nav",
     //   },

@@ -982,11 +982,11 @@ mr="md"
                                     );
                                     if (currentUser?.role === "admin") {
                                       navigate(
-                                        `/admin/updateVehicle/${row._id}`
+                                        `/user/updateVehicle/${row._id}`
                                       );
                                     } else {
                                       navigate(
-                                        `/seller/updateVehicle/${row._id}`
+                                        `/user/updateVehicle/${row._id}`
                                       );
                                     }
                                   }}

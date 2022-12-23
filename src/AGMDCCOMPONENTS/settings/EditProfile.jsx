@@ -275,7 +275,7 @@ const EditProfile = () => {
         });
 
         setVisible(false);
-        navigate("/admin/");
+        navigate("/user/");
       } else {
         showNotification({
           title: "THIS ERROR SHOULD NOT HAVE OCCURRED",
@@ -410,7 +410,7 @@ const EditProfile = () => {
                   align="center"
                   color="red"
                   leftIcon={<IconTrash size={14} />}
-                  onClick={() => navigate("/admin/viewOrder")}
+                  onClick={() => navigate("/user/viewOrder")}
                 >
                   Yes, Cancel
                 </Button>

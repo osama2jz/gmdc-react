@@ -30,7 +30,7 @@ import {
 export const SellerSideBarData = [
   {
     title: "1 - Dashboard",
-    path: "/seller/",
+    path: "/user/",
     icon: <AiIcons.AiFillHome />,
   },
   // {
@@ -42,13 +42,13 @@ export const SellerSideBarData = [
   //   subNav: [
   //     {
   //       title: "2.1 - Add User",
-  //       path: "/seller/adduser",
+  //       path: "/user/adduser",
   //       icon: <UserPlus size={20} />,
   //       cName: "sub-nav",
   //     },
   //     {
   //       title: "2.2 - View All Users",
-  //       path: "/seller/viewusers",
+  //       path: "/user/viewusers",
   //       icon: <Users size={20} />,
   //       cName: "sub-nav",
   //     },
@@ -64,13 +64,13 @@ export const SellerSideBarData = [
     subNav: [
       {
         title: "2.1 - Add Vehicle",
-        path: "/seller/addvehicle",
+        path: "/user/addvehicle",
         icon: <Plus />,
         cName: "sub-nav",
       },
       {
         title: "2.2 - View All Vehicles",
-        path: "/seller/viewvehicals",
+        path: "/user/viewvehicals",
         icon: <Eye />,
         cName: "sub-nav",
       },
@@ -87,25 +87,25 @@ export const SellerSideBarData = [
     subNav: [
       // {
       //   title: "4.1 - Add Order",
-      //   path: "/seller/addOrder",
+      //   path: "/user/addOrder",
       //   icon: <Plus />,
       //   cName: "sub-nav",
       // },
       {
         title: "3.1 - View Orders",
-        path: "/seller/viewOrder",
+        path: "/user/viewOrder",
         icon: <BuildingCommunity size={20} />,
         cName: "sub-nav",
       },
       // {
       //   title: "4.3 - View Paid Orders",
-      //   path: "/seller/viewPaidOrders",
+      //   path: "/user/viewPaidOrders",
       //   icon: <BuildingCommunity size={20} />,
       //   cName: "sub-nav",
       // },
       // {
       //   title: "4.4 - View Processed Orders",
-      //   path: "/seller/viewProcessedOrders",
+      //   path: "/user/viewProcessedOrders",
       //   icon: <BuildingCommunity size={20} />,
       //   cName: "sub-nav",
       // },
@@ -121,33 +121,33 @@ export const SellerSideBarData = [
     subNav: [
       // {
       //   title: "5.1 - Add Payment",
-      //   path: "/seller/addPayment",
+      //   path: "/user/addPayment",
       //   icon: <Plus size={20} />,
       // },
 
       {
         title: "4.1 - View Payments",
-        path: "/seller/viewPayments",
+        path: "/user/viewPayments",
         icon: <Eye size={20} />,
       },
     ],
   },
   {
     title: "5 - Settings",
-    path: "/seller/editProfile",
+    path: "/user/editProfile",
     icon: <BoxMultiple size={20} />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,
     // subNav: [
     //   {
     //     title: "6.1 - Add Vendor Categories",
-    //     path: "/seller/addVendorCategory",
+    //     path: "/user/addVendorCategory",
     //     icon: <Plus size={20} />,
     //     cName: "sub-nav",
     //   },
     //   {
     //     title: "6.2 - View Vendor Categories",
-    //     path: "/seller/vendorCategories",
+    //     path: "/user/vendorCategories",
     //     icon: <Eye size={20} />,
     //     cName: "sub-nav",
     //   },

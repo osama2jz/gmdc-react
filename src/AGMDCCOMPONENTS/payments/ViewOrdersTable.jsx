@@ -295,7 +295,7 @@ const ViewPaymentsTable = ({ setCurrentLocation }) => {
     setOpened(false);
     setVisible(true);
     axios
-      .delete(`https://a-wep.herokuapp.com/admin/deleteUser/${id}`)
+      .delete(`https://a-wep.herokuapp.com/user/deleteUser/${id}`)
       .then((res) => {
         if (res.data.status === "success") {
           // console.log(res.data);
@@ -438,7 +438,7 @@ const ViewPaymentsTable = ({ setCurrentLocation }) => {
     try {
       const response = await axios({
         method: "patch",
-        url: `https://a-wep.herokuapp.com/admin/updateUser/${id}`,
+        url: `https://a-wep.herokuapp.com/user/updateUser/${id}`,
         data: body,
         headers: headers,
       });
@@ -509,8 +509,8 @@ const ViewPaymentsTable = ({ setCurrentLocation }) => {
               component={Link}
               to={
                 JSON.parse(localStorage.getItem("userData")).role === "admin"
-                  ? "/admin/addPayment"
-                  : "/seller/addPayment"
+                  ? "/user/addPayment"
+                  : "/user/addPayment"
               }
               rightIcon={<Plus />}
               variant="filled"
@@ -873,11 +873,11 @@ mr="md"
       );
       if (currentUser?.role === "admin") {
         navigate(
-          `/admin/updateOrder/${row._id}`
+          `/user/updateOrder/${row._id}`
         );
       } else {
         navigate(
-          `/seller/updateOrder/${row._id}`
+          `/user/updateOrder/${row._id}`
         );
       }
     }}

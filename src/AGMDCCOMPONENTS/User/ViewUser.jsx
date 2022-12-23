@@ -459,7 +459,7 @@ const ViewUsers = ({ setCurrentLocation }) => {
           >
             <Button
               component={Link}
-              to="/admin/addUser"
+              to="/user/addUser"
               rightIcon={<Plus />}
               variant="filled"
               color="dark"
@@ -919,11 +919,11 @@ const ViewUsers = ({ setCurrentLocation }) => {
                                         )?.role === "admin"
                                       ) {
                                         navigate(
-                                          `/admin/updateUser/${row._id}`
+                                          `/user/updateUser/${row._id}`
                                         );
                                       } else {
                                         navigate(
-                                          `/seller/updateUser/${row._id}`
+                                          `/user/updateUser/${row._id}`
                                         );
                                       }
                                     }}
@@ -1119,9 +1119,9 @@ const ViewUsers = ({ setCurrentLocation }) => {
                             JSON.parse(localStorage.getItem("userData"))
                               ?.role === "admin"
                           ) {
-                            navigate(`/admin/updateUser/${row._id}`);
+                            navigate(`/user/updateUser/${row._id}`);
                           } else {
-                            navigate(`/seller/updateUser/${row._id}`);
+                            navigate(`/user/updateUser/${row._id}`);
                           }
                         }}
                       >

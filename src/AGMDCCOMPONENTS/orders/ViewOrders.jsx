@@ -758,7 +758,7 @@ const ViewOrders = ({ hideStatus }) => {
                 <Button
                   color="orange"
                   onClick={() => {
-                    navigate(`/admin/addPayment/${"downPayment"}/${orderId}`);
+                    navigate(`/user/addPayment/${"downPayment"}/${orderId}`);
                   }}
                 >
                   Mark As DP Paid
@@ -767,7 +767,7 @@ const ViewOrders = ({ hideStatus }) => {
                 <Button
                   color="yellow"
                   onClick={() => {
-                    navigate(`/admin/addPayment/${"processing"}/${orderId}`);
+                    navigate(`/user/addPayment/${"processing"}/${orderId}`);
                   }}
                 >
                   Mark As Processed
@@ -807,7 +807,7 @@ const ViewOrders = ({ hideStatus }) => {
                 color="orange"
                 type="submit"
                 // onClick={() => {
-                //   navigate(`/admin/addPayment/${"downPayment"}/${orderId}`);
+                //   navigate(`/user/addPayment/${"downPayment"}/${orderId}`);
                 // }}
               >
                 Reply and Mark As Processed
@@ -829,8 +829,8 @@ const ViewOrders = ({ hideStatus }) => {
               component={Link}
               to={
                 JSON.parse(localStorage.getItem("userData"))?.role === "admin"
-                  ? "/admin/addOrder"
-                  : "/seller/addOrder"
+                  ? "/user/addOrder"
+                  : "/user/addOrder"
               }
               rightIcon={<Plus />}
               variant="filled"
@@ -1451,11 +1451,11 @@ const ViewOrders = ({ hideStatus }) => {
                                       );
                                       if (currentUser?.role === "admin") {
                                         navigate(
-                                          `/admin/updateOrder/${row._id}`
+                                          `/user/updateOrder/${row._id}`
                                         );
                                       } else {
                                         navigate(
-                                          `/seller/updateOrder/${row._id}`
+                                          `/user/updateOrder/${row._id}`
                                         );
                                       }
                                     }}
