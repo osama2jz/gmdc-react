@@ -29,7 +29,6 @@ const Inventory = () => {
   const [price, setPrice] = useState({ from: undefined, to: undefined });
   const [transmission, setTransmission] = useState([]);
   const [mileage, setMileage] = useState({ from: undefined, to: undefined });
-  // const [hp, setHp] = useState({ from: undefined, to: undefined });
   const [engine, setEngine] = useState([]);
 
   useEffect(() => {
@@ -46,6 +45,7 @@ const Inventory = () => {
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setCount(response.data.totalVehicles);
           setLoading(false);
         })
         .catch((err) => console.error(err));
@@ -63,6 +63,7 @@ const Inventory = () => {
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setCount(response.data.totalVehicles);
           setLoading(false);
         })
         .catch((err) => console.error(err));
@@ -75,31 +76,12 @@ const Inventory = () => {
         .then((response) => response.json())
         .then((response) => {
           setCars((cars) => response.data.vehicles);
+          setCount(response.data.totalVehicles);
           setLoading(false);
         })
         .catch((err) => console.error(err));
     }
   }, [page]);
-  const [allCars, setAllCars] = useState([]);
-  // console.log("allCars", allCars);
-
-  //for pagination
-  useEffect(() => {
-    const options = {
-      method: "GET",
-    };
-
-    fetch(`${backendURL}/vehicle/allvehicles`, options)
-      .then((response) => response.json())
-      .then((response) => {
-        setCount((count) => response.data.count);
-        setAllCars(response.data.vehicles);
-      })
-      .catch((err) => console.error(err));
-  }, []);
-  // useEffect(() => {
-
-  // }, [search]);
 
   //apply filters
   const applyFilters = () => {
@@ -125,6 +107,7 @@ const Inventory = () => {
       .then((response) => response.json())
       .then((response) => {
         setCars((cars) => response.data.vehicles);
+        setCount(response.data.totalVehicles);
         setLoading(false);
       })
       .catch((err) => console.error(err));
@@ -132,8 +115,8 @@ const Inventory = () => {
 
   //search
   const applySearch = () => {
-    if(location.pathname !== "/inventory"){
-      navigate("/inventory")
+    if (location.pathname !== "/inventory") {
+      navigate("/inventory");
     }
     setPage(1);
     setLoading(true);
@@ -149,19 +132,11 @@ const Inventory = () => {
     fetch(url, options)
       .then((response) => response.json())
       .then((response) => {
-        // console.log("response", response.headers["total-Records"])
         setCars((cars) => response.data.vehicles);
+        setCount(response.data.totalVehicles);
         setLoading(false);
       })
       .catch((err) => console.error(err));
-    if (search?.length > 0) {
-      let newCount = allCars?.filter(
-        (e) =>
-          e?.vin?.toLocaleLowerCase()?.includes(search?.toLocaleLowerCase()) ||
-          e?.title?.toLocaleLowerCase()?.includes(search?.toLocaleLowerCase())
-      );
-      setCount(newCount.length);
-    }
   };
 
   //Clear Filters
@@ -296,20 +271,6 @@ const Inventory = () => {
               onChange={(v) => setMileage({ ...mileage, to: v.target.value })}
             />
           </div>
-          {/* <h6 className="mt-3">Horsepower</h6>
-          <div className="d-flex align-items-center">
-            <InputField
-              title="From"
-              type="number"
-              onChange={(v) => setHp({ ...hp, from: v.target.value })}
-            />
-            <p className="mx-3 my-0">-</p>
-            <InputField
-              title="To"
-              type="number"
-              onChange={(v) => setHp({ ...hp, to: v.target.value })}
-            />
-          </div> */}
           <div
             style={{
               width: "100%",
