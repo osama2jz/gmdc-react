@@ -53,7 +53,7 @@ const EditProfile = () => {
   const [loading, setLoading] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [disabled2, setDisabled2] = useState(false);
-  const [percentages, setPercentages] = useState([]);
+
   const [refresh3, setRefresh3] = useState(true);
   const [error, setError] = useState("");
   const [images, setImages] = useState([]);
@@ -93,6 +93,8 @@ const EditProfile = () => {
         form.setFieldValue("phone", response?.phone);
         form.setFieldValue("state", response?.state);
         form.setFieldValue("zip", response?.zip);
+        setImages([response?.profileImage?.image]);
+    
 
         return response;
       } else {
@@ -106,7 +108,13 @@ const EditProfile = () => {
     fetchUserDetails().then(setProfileData);
   }, []);
   const previews = images?.map((file, index) => {
-    const imageUrl = URL.createObjectURL(file);
+    let imageUrl;
+    console.log("USER PROFILE IMAGE", file);
+    try {
+      imageUrl = URL.createObjectURL(file);
+    } catch (e) {
+      imageUrl = file;
+    }
     return (
       <div>
         <Avatar
@@ -119,69 +127,12 @@ const EditProfile = () => {
             onLoad: () => URL.revokeObjectURL(imageUrl),
           }}
         />
-        <Progress
-          animate={percentages[index] === 100 ? false : true}
-          value={percentages[index] === 100 ? 100 : 100}
-          label={percentages[index] === 100 && "100% Completed"}
-          size="xl"
-          radius="xl"
-          color={percentages[index] === 100 ? "green" : "gray"}
-        />
       </div>
     );
   });
 
   // NAVIGATE
   let navigate = useNavigate();
-
-  // UPLOAD IMAGES METHOD
-  const handleUpload = (images) => {
-    setError("");
-    setPercentages([]);
-    setDisabled(true);
-    setDisabled2(true);
-
-    if (images.length <= 0) {
-      alert("Please choose a file first!");
-    }
-    var percent = 0;
-    for (let i = 0; i < images.length; i++) {
-      const image = images[i];
-      // alert("IN2");
-      const storageRef = ref(
-        storage,
-        `/users/${image.name}+${Math.random(999999)}`
-      );
-      const uploadTask = uploadBytesResumable(storageRef, image);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          console.log(snapshot);
-          percent = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-        },
-        (err) => console.log(err),
-        () => {
-          // download url
-          let Percentages = percentages;
-          Percentages[i] = percent;
-          // alert(i);
-          console.log(Percentages);
-          //   alert(Percentages)
-          setPercentages(Percentages);
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            setUrls(url);
-            setRefresh(!refresh);
-            setDisabled(false);
-            setDisabled2(false);
-            setError("");
-          });
-        }
-      );
-    }
-    // alert("OUT");
-  };
 
   // FORM
   const form = useForm({
@@ -593,7 +544,7 @@ const EditProfile = () => {
                       // radius={120}
                       onDrop={(e) => {
                         setImages(e);
-                        handleUpload(e);
+                        // handleUpload(e);
                       }}
                       maxSize={3 * 1024 ** 2}
                       maxFiles={1}
