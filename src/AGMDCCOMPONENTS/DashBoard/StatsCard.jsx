@@ -27,7 +27,7 @@ export function StatsCard({ data, cols }) {
                   ? "#DC143C"
                   : userType() === "seller"
                   ? "#e60084"
-                  : "#1e90ff"
+                  : "#00619E"
               }`,
               // display: "flex",
               // justifyContent: "space-between",

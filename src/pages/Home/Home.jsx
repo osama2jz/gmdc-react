@@ -105,7 +105,7 @@ const Home = ({ currentLocation }) => {
                         ? "#DC143C"
                         : userType() === "seller"
                         ? "#e60084"
-                        : "#1e90ff",
+                        : "#00619E",
                     // backgroundImage:
                     //   JSON.parse(localStorage.getItem("userData")).role ===
                     //   "admin"
@@ -153,7 +153,7 @@ const Home = ({ currentLocation }) => {
                                 ? "#DC143C"
                                 : userType() === "seller"
                                 ? "#e60084"
-                                : "#1e90ff",
+                                : "#00619E",
                             // backgroundImage:
                             //   JSON.parse(localStorage.getItem("userData"))
                             //     .role === "admin"
@@ -226,7 +226,7 @@ const Home = ({ currentLocation }) => {
                             ? "GMDC SELLER PANEL"
                             : "GMDC CUSTOMER PANEL"}
                         </Text>
-                        <Text color="grape" size={23}>
+                        <Text color="#00619E" size={23}>
                           {currentLocation}
                         </Text>
                       </Group>
