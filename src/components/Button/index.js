@@ -21,6 +21,8 @@ const Button = ({
         backgroundColor: primary ? "rgb(0, 97, 158)" : "white",
         border: "1px solid rgb(0,0,0,0.3)",
         color: primary ? "white" : "black",
+        opacity: disable ? 0.2 : 1,
+        cursor: disable ? 'not-allowed': 'pointer',
         width: width,
         fontSize: fontSize,
         fontWeight: fontWeight,

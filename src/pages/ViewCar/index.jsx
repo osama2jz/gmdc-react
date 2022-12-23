@@ -50,7 +50,7 @@ const ViewCar = ({}) => {
       {car.title ? (
         <>
           <Carousel
-            align={car.assets.length == 1 ? "center" : "start"}
+            align={car.assets.length < 2 ? "center" : "start"}
             plugins={[autoplay.current]}
             onMouseEnter={autoplay.current.stop}
             onMouseLeave={autoplay.current.reset}
@@ -84,7 +84,7 @@ const ViewCar = ({}) => {
             </Grid>
           )}
           <div
-            className="d-flex p-3 justify-content-between my-4 rounded"
+            className="d-flex px-3 pt-2 justify-content-between my-4 rounded"
             style={{
               width: "98vw",
               backgroundColor: "rgb(0, 0, 0, 0.1)",
@@ -110,7 +110,7 @@ const ViewCar = ({}) => {
                 className="mt-1 ml-1 float-right"
                 style={{
                   backgroundColor: "rgb(0, 97, 148)",
-                  width: "50px",
+                  width: "30%",
                   height: "5px",
                 }}
               ></div>

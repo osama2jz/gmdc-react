@@ -80,7 +80,7 @@ export default function footer() {
       </section>
 
       <div
-        className="text-center p-4"
+        className="text-center p-2"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
       >
         © 2022 Copyright:

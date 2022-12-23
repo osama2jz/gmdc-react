@@ -21,22 +21,22 @@ const InventoryCard = ({
   awd,
   title,
   location,
-  id
+  id,
 }) => {
   const navigate = useNavigate();
   return (
-    <div className="card" onClick={() => navigate(`/viewCar/${id}`)}>
+    <div className="card shadow" onClick={() => navigate(`/viewCar/${id}`)}>
       <img
         src={icon || require(`../../assets/notavailable.jpg`)}
         className="mr-2"
         style={{
           height: "200px",
           width: "100%",
-          borderTopLeftRadius: "20px",
-          borderTopRightRadius: "20px",
+          borderTopLeftRadius: "7px",
+          borderTopRightRadius: "7px",
         }}
       />
-      <div className="p-2 d-flex flex-column justify-content-between">
+      <div className="p-2 d-flex flex-column justify-content-between" style={{height:'220px'}}>
         <div className="row d-flex gap-1">
           <h3>{title}</h3>
           <h6 className="col d-flex">
@@ -72,29 +72,22 @@ const InventoryCard = ({
             </h6>
           )}
         </div>
-        <div>
-          <div className="d-flex justify-content-between">
-            {/* <h6>Est. {price2}/month</h6> */}
-          </div>
-          <div
-            className="d-flex px-2 justify-content-between mt-2 align-items-center pt-3"
-            style={{
-              borderTop: "1px solid gray",
-              // position: "relative",
-              // bottom: "0px",
-              fontSize: "12px",
-              height: "30px",
-            }}
-          >
-            <h3>{price}</h3>
-            <Button
-              title="Book Now"
-              primary={true}
-              className="btn-sm"
-              width="100px"
-              fontSize="14px"
-            />
-          </div>
+        <div
+          className="d-flex justify-content-between mt-2 align-items-end"
+          style={{
+            borderTop: "1px solid gray",
+            fontSize: "12px",
+            height: "40px",
+          }}
+        >
+          <h3>{price}</h3>
+          <Button
+            title="Book Now"
+            primary={true}
+            className="btn-sm"
+            width="100px"
+            fontSize="14px"
+          />
         </div>
       </div>
     </div>
