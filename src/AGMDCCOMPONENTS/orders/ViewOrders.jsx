@@ -699,7 +699,7 @@ const ViewOrders = ({ hideStatus }) => {
     setChecked(false);
   };
   const stripePromise = loadStripe(
-    "pk_test_51LZZvfE15s0GgNMhr1G5APbmPXyGbm10KdljXh7FWBA9QvUtisLvRVN6SAswoq2M1D6v5f0hTi484tqZDs50P8Rq00pU0tq3QQ"
+    "pk_test_51MIHwcLtRN90YHBGUp2oPpwp49eL58N8ORBHzmxeaYEtvgZRfkUUTG55zGrdepvEHHkIFe1TqbFqpsdsCZ2tXVvu00kSmub0Dm"
   );
   const [clientSecret, setClientSecret] = useState("");
   const appearance = {
