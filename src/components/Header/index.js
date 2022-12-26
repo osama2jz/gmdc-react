@@ -9,13 +9,16 @@ import "./styles.scss";
 
 const Header = ({ t }) => {
   const [show, setShow] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    localStorage.getItem("userData")
+  );
 
   const logout = () => {
     localStorage.setItem("userToken", "");
     localStorage.setItem("userType", "");
     localStorage.clear();
     window.location.reload();
-    Navigate("/")
+    Navigate("/");
   };
 
   return (
@@ -23,7 +26,7 @@ const Header = ({ t }) => {
       <div>
         <nav
           className="navbar navbar-2 navbar-expand-md d-flex"
-          style={{ height: show ? "300px" : "70px", justifyContent: "between" }}
+          style={{ height: show ? "300px" : "70px" }}
         >
           <a className="navbar-brand" href="/">
             GMDC
@@ -48,7 +51,7 @@ const Header = ({ t }) => {
                   Home
                 </a>
               </li>
-              {localStorage.getItem("userData") &&
+              {isLoggedIn &&
               JSON.parse(localStorage.getItem("userData")).role ===
                 "customer" ? (
                 <li className="nav-item">
@@ -93,7 +96,7 @@ const Header = ({ t }) => {
                   Home
                 </a>
               </li>
-              {localStorage.getItem("userData") &&
+              {isLoggedIn &&
               JSON.parse(localStorage.getItem("userData")).role ===
                 "customer" ? (
                 <li className="nav-item">
@@ -120,7 +123,7 @@ const Header = ({ t }) => {
             </ul>
           </div>
 
-          {!localStorage.getItem("userData") ? (
+          {!isLoggedIn ? (
             <div className="d-flex gap-3 buttonss">
               <a href={routeNames.general.login}>
                 <Button title={"Signin"} primary={true} />
@@ -130,7 +133,9 @@ const Header = ({ t }) => {
               </a>
             </div>
           ) : (
-            <Button title={"Logout"} primary={true} onClick={logout} />
+            <div className="buttonss">
+              <Button title={"Logout"} primary={true} onClick={logout} />
+            </div>
           )}
         </nav>
       </div>
