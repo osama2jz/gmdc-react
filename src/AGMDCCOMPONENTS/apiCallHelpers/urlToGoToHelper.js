@@ -3,9 +3,9 @@ export const userURL = () => {
   console.log("HERE IN THIS FUNCTION");
   if (role === "admin") {
     console.log("ADMIN");
-    return `admin`;
+    return `user`;
   } else {
     console.log("SELLER");
-    return `seller`;
+    return `user`;
   }
 };

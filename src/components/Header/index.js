@@ -20,7 +20,7 @@ const Header = ({ t }) => {
     window.location.reload();
     Navigate("/");
   };
-
+console.log("isLoggedIn", isLoggedIn, localStorage.getItem("userData"))
   return (
     <div className="header">
       <div>

@@ -19,6 +19,88 @@ const ViewOrderModal = ({ orderDetails }) => {
         <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
           <Text>{orderDetails?.vinNo}</Text>
         </Grid.Col>
+        {userType() !== "seller" && (
+          <>
+           <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Sales Tax</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>
+                {orderDetails?.salesTax
+                  ? orderDetails?.salesTax?.toFixed(2)
+                  : 0}
+              </Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Title Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.titleFee}</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Registration Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.registrationFee}</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Lean Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.leanFee}</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>GAP Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.licenseFee}</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Freight Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.freightFee || 0}</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Dealer Processing Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.dealerProcessingFee || 0}</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Warranty Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.warrantyFee}</Text>
+            </Grid.Col>
+            
+           
+           
+            {userType() === "admin" && (
+              <>
+                <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+                  <Text>Amount Financed (From Bank)</Text>
+                </Grid.Col>
+                <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+                  <Text>Rs. {orderDetails?.inspectionFee || 0}</Text>
+                </Grid.Col>
+              </>
+            )}
+           
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Dealer Center Fee</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.dealerFee || 0}</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Vehicle Price</Text>
+            </Grid.Col>
+            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
+              <Text>Rs. {orderDetails?.vehiclePrice || 0}</Text>
+            </Grid.Col>
+          </>
+        )}
         {userType() === "admin" && (
           <>
             <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
@@ -42,78 +124,6 @@ const ViewOrderModal = ({ orderDetails }) => {
           </>
         )}
 
-        {userType() !== "seller" && (
-          <>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Title Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.titleFee}</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Registration Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.registrationFee}</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>GAP Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.licenseFee}</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Warranty Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.warrantyFee}</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Lean Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.leanFee}</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Sales Tax</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>
-                {orderDetails?.salesTax
-                  ? orderDetails?.salesTax?.toFixed(2)
-                  : 0}
-              </Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Freight Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.freightFee || 0}</Text>
-            </Grid.Col>
-            {userType() === "admin" && (
-              <>
-                <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-                  <Text>Amount Financed (From Bank)</Text>
-                </Grid.Col>
-                <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-                  <Text>Rs. {orderDetails?.inspectionFee || 0}</Text>
-                </Grid.Col>
-              </>
-            )}
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Dealer Processing Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.dealerProcessingFee || 0}</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Dealer Center Fee</Text>
-            </Grid.Col>
-            <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
-              <Text>Rs. {orderDetails?.dealerFee || 0}</Text>
-            </Grid.Col>
-          </>
-        )}
         <Grid.Col style={{ border: "1px solid #e6e6e6" }} lg={6}>
           <Text>Order Status </Text>
         </Grid.Col>

@@ -94,7 +94,6 @@ const EditProfile = () => {
         form.setFieldValue("state", response?.state);
         form.setFieldValue("zip", response?.zip);
         setImages([response?.profileImage?.image]);
-    
 
         return response;
       } else {
@@ -233,25 +232,31 @@ const EditProfile = () => {
     setLoading(true);
     var { name, phone, state, zip } = event;
     // console.log(event);
-
-    const body = {
-      name: name,
-      phone: phone,
-      image: images[0],
-      profileImage: {
-        image: images[0],
-        imageId: images[0],
-      },
-      zip: zip,
-      state: state,
-    };
-    console.log("BODY INSIDE PATCH: ", body);
+    let form_data = new FormData();
+    form_data.append("name", name);
+    form_data.append("phone", phone);
+    form_data.append("image", images[0]);
+    // form_data.append("profileImage", images[0]);
+    form_data.append("state", state);
+    form_data.append("zip", zip);
+    // const body = {
+    //   name: name,
+    //   phone: phone,
+    //   image: images[0],
+    //   profileImage: {
+    //     image: images[0],
+    //     imageId: images[0],
+    //   },
+    //   zip: zip,
+    //   state: state,
+    // };
+    console.log("BODY INSIDE PATCH: ", form_data);
 
     try {
       const response = await axios({
         method: "put",
         url: `${backendURL}/user/update_profile/${id}`,
-        data: body,
+        data: form_data,
         headers: getHeader(),
       });
 
@@ -273,7 +278,9 @@ const EditProfile = () => {
           color: "green",
           message: `DETAILS UPDATED SUCCESSFULLY!!`,
         });
-
+        // let token = JSON.parse(localStorage.getItem("userData")).token;
+        // response.token = token;
+        // localStorage.setItem("userData", JSON.stringify(response));
         setVisible(false);
         navigate("/user/");
       } else {

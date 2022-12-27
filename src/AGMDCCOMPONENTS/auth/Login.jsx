@@ -325,6 +325,7 @@ const Login = ({ email, password }) => {
                 width: "100%",
 
                 position: matches769 ? "relative" : "absolute",
+                top: matches769 ? "0px" : "100px",
               }}
               p={"xl"}
             >

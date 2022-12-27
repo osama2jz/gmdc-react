@@ -66,6 +66,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       totalPrice: 0,
       downPayment: 0,
       remainingPayment: 0,
+      installments: 0,
     },
 
     validate: {
@@ -123,6 +124,7 @@ const AddOrder = ({ setCurrentLocation }) => {
         value >= 0 ? null : "Down Payment is Required greater than 0",
       remainingPayment: (value) =>
         value >= 0 ? null : "Invalid Remaining Amount",
+      installments: (value) => (value >= 0 ? null : "Invalid Remaining Amount"),
     },
   });
   const [allCustomers, setAllCustomers] = useState([
@@ -333,6 +335,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       form.setFieldValue("totalPrice", response?.totalPrice);
       form.setFieldValue("downPayment", response?.downPayment);
       form.setFieldValue("remainingPayment", response?.remainingPayment);
+      form.setFieldValue("installments", response?.installments);
       setVisible(false);
 
       // setRefresh(false);
@@ -374,6 +377,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       totalPrice,
       downPayment,
       remainingPayment,
+      installments
     } = event;
     const body = {
       vehicleId: selectedVehicleId,
@@ -394,6 +398,7 @@ const AddOrder = ({ setCurrentLocation }) => {
       totalPrice: totalPrice,
       downPayment: downPayment,
       remainingPayment: remainingPayment,
+      installments
     };
     // for (let key in body) {
     //   if (typeof body[key] == "string") {
@@ -545,6 +550,8 @@ const AddOrder = ({ setCurrentLocation }) => {
     let remainingPrice = form.values.totalPrice - form.values.downPayment;
 
     form.setFieldValue("remainingPayment", remainingPrice);
+    let installments = remainingPrice/72;
+    form.setFieldValue("installments", installments);
   }, [form.values.downPayment, form.values.totalPrice]);
   useEffect(() => {
     let sellerId = allVinNumbers.find(
@@ -876,6 +883,18 @@ const AddOrder = ({ setCurrentLocation }) => {
                   label="Remaining Payment"
                   placeholder="Remaining Payment"
                   {...form.getInputProps("remainingPayment")}
+                />
+              </Grid.Col>
+              <Grid.Col md={12} lg={12}>
+                <NumberInput
+                  size="md"
+                  required
+                  min={0}
+                  hideControls
+                  disabled
+                  label="Monthly Installments"
+                  placeholder="Installments"
+                  {...form.getInputProps("installments")}
                 />
               </Grid.Col>
             </Grid>

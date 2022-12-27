@@ -68,7 +68,7 @@ export default function footer() {
               </p>
               <p>
                 <img src={email} style={{ width: "20px" }} className="mr-2" />
-                gmdc@gmail.com
+                usergmdc@gmail.com
               </p>
               <p>
                 <img src={phone} style={{ width: "20px" }} className="mr-2" />+

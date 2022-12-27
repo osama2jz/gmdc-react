@@ -179,7 +179,11 @@ const SignUp = ({ setHookEmail, setHookPassword }) => {
   return (
     <MantineProvider withNormalizeCSS withGlobalStyles>
       <NotificationsProvider>
-        <Paper p={0} m={0} style={{ height: "100%", width: "100%" }}>
+        <Paper
+          p={0}
+          m={0}
+          style={{ height: "100%", width: "100%", marginBottom: "100px" }}
+        >
           <Grid
             align={"center"}
             p={0}
@@ -225,6 +229,7 @@ const SignUp = ({ setHookEmail, setHookPassword }) => {
               style={{
                 position: matches769 ? "relative" : "absolute",
                 width: "100%",
+                top: matches769 ? "0px" : "200px",
               }}
               p={"xl"}
             >
@@ -262,18 +267,6 @@ const SignUp = ({ setHookEmail, setHookPassword }) => {
                     overlayColor="#c5c5c5"
                     visible={loading}
                   />
-                  {/*
-    <Select
-      searchable
-      icon={<User />}
-      py={paddingSize}
-      label="Select User Type"
-      required
-      size={inputSize}
-      placeholder={"Select User Type"}
-      data={getUserTypes}
-    />
-*/}
                   <Radio.Group
                     // value={value}
                     // onChange={setValue}
@@ -415,7 +408,7 @@ const SignUp = ({ setHookEmail, setHookPassword }) => {
                       cursor: "pointer",
                     }}
                   >
-                    <Text component={Link} to="/" size={18}>
+                    <Text component={Link} to="/login" size={18}>
                       SIGN IN
                     </Text>
                   </Box>

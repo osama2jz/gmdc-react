@@ -291,7 +291,7 @@ const Home = ({ currentLocation }) => {
                                 <Menu.Item
                                   icon={<Edit color="green" />}
                                   onClick={() => {
-                                    navigate(`/${userURL()}/editProfile`, {
+                                    navigate(`/user/editProfile`, {
                                       state: {
                                         // ID: user.id,
                                         // NAME: user.name,

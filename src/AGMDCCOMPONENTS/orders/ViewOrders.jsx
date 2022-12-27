@@ -1079,25 +1079,44 @@ const ViewOrders = ({ hideStatus }) => {
                       )
                       ?.map((row, index) => {
                         return (
-                          <TableRow
-                            key={index}
-                            onClick={() => {
-                              console.log("View vehical");
-                              if (userType() === "customer") {
-                                setOrderDetails(row);
-                                setViewOrdersModal(true);
-                              }
-                            }}
-                          >
-                            <TableCell component="th" scope="row">
+                          <TableRow key={index}>
+                            <TableCell
+                              component="th"
+                              scope="row"
+                              onClick={() => {
+                                console.log("View vehical");
+                                if (userType() === "customer") {
+                                  setOrderDetails(row);
+                                  setViewOrdersModal(true);
+                                }
+                              }}
+                            >
                               {row?.SR}
                             </TableCell>
-                            <TableCell align="left">
+                            <TableCell
+                              align="left"
+                              onClick={() => {
+                                console.log("View vehical");
+                                if (userType() === "customer") {
+                                  setOrderDetails(row);
+                                  setViewOrdersModal(true);
+                                }
+                              }}
+                            >
                               <Text>{row?.vinNo}</Text>
                             </TableCell>
                             {userType() !== "admin" && (
                               <>
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  onClick={() => {
+                                    console.log("View vehical");
+                                    if (userType() === "customer") {
+                                      setOrderDetails(row);
+                                      setViewOrdersModal(true);
+                                    }
+                                  }}
+                                >
                                   {row?.title || "No Title"}
                                 </TableCell>
                               </>
@@ -1105,35 +1124,180 @@ const ViewOrders = ({ hideStatus }) => {
 
                             {userType() === "admin" && (
                               <>
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  onClick={() => {
+                                    console.log("View vehical");
+                                    if (userType() === "customer") {
+                                      setOrderDetails(row);
+                                      setViewOrdersModal(true);
+                                    }
+                                  }}
+                                >
                                   {row?.customer?.name || "No Customer"}
                                 </TableCell>
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  onClick={() => {
+                                    console.log("View vehical");
+                                    if (userType() === "customer") {
+                                      setOrderDetails(row);
+                                      setViewOrdersModal(true);
+                                    }
+                                  }}
+                                >
                                   {row?.sellerId?.name || "No Seller"}
                                 </TableCell>
                               </>
                             )}
                             {userType() !== "seller" && (
                               <>
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  onClick={() => {
+                                    console.log("View vehical");
+                                    if (userType() === "customer") {
+                                      setOrderDetails(row);
+                                      setViewOrdersModal(true);
+                                    }
+                                  }}
+                                >
                                   {row?.totalPrice?.toLocaleString()}
                                 </TableCell>
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  onClick={() => {
+                                    console.log("View vehical");
+                                    if (userType() === "customer") {
+                                      setOrderDetails(row);
+                                      setViewOrdersModal(true);
+                                    }
+                                  }}
+                                >
                                   {row?.downPayment?.toLocaleString()}
                                 </TableCell>
 
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  // onClick={() => {
+                                  //   console.log("View vehical");
+                                  //   if (userType() === "customer") {
+                                  //     setOrderDetails(row);
+                                  //     setViewOrdersModal(true);
+                                  //   }
+                                  // }}
+                                >
                                   {row?.remainingPayment?.toLocaleString()}
+                                  {userType() === "customer" && (
+                                    <Button
+                                      size="xs"
+                                      m={"3px"}
+                                      compact
+                                      color="blue"
+                                      onClick={async () => {
+                                        console.log("LAUNCHING PAYMENT");
+                                        try {
+                                          let apiResponse = await axiosPost(
+                                            "/payment/payment-intent",
+                                            {
+                                              orderId: row?._id,
+                                            }
+                                          );
+                                          console.log(
+                                            "API RESPONSE",
+                                            apiResponse
+                                          );
+                                          if (apiResponse === null) {
+                                            showNotification({
+                                              title: "Already paid",
+                                              message:
+                                                "This order has already been paid",
+                                              color: "yellow",
+                                            });
+                                          } else {
+                                            setClientSecret(
+                                              apiResponse.data.data
+                                                .client_secret
+                                            );
+                                          }
+                                        } catch (e) {
+                                          console.log("error");
+                                        }
+                                        // setViewOrdersModal(false);
+                                        setViewPaymentModal(true);
+                                        setAmountPayable(row);
+                                      }}
+                                    >
+                                      Pay Now
+                                    </Button>
+                                    // <ActionIcon
+                                    //   color="dark"
+                                    //   variant="transparent"
+                                    //   onClick={async () => {
+                                    //     console.log("LAUNCHING PAYMENT");
+                                    //     try {
+                                    //       let apiResponse = await axiosPost(
+                                    //         "/payment/payment-intent",
+                                    //         {
+                                    //           orderId: row?._id,
+                                    //         }
+                                    //       );
+                                    //       console.log(
+                                    //         "API RESPONSE",
+                                    //         apiResponse
+                                    //       );
+                                    //       if (apiResponse === null) {
+                                    //         showNotification({
+                                    //           title: "Already paid",
+                                    //           message:
+                                    //             "This order has already been paid",
+                                    //           color: "yellow",
+                                    //         });
+                                    //       } else {
+                                    //         setClientSecret(
+                                    //           apiResponse.data.data
+                                    //             .client_secret
+                                    //         );
+                                    //       }
+                                    //     } catch (e) {
+                                    //       console.log("error");
+                                    //     }
+                                    //     // setViewOrdersModal(false);
+                                    //     setViewPaymentModal(true);
+                                    //     setAmountPayable(row);
+                                    //   }}
+                                    // >
+                                    //   <BrandStripe />
+                                    // </ActionIcon>
+                                  )}
                                 </TableCell>
                               </>
                             )}
 
                             {userType() === "seller" && (
                               <>
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  onClick={() => {
+                                    console.log("View vehical");
+                                    if (userType() === "customer") {
+                                      setOrderDetails(row);
+                                      setViewOrdersModal(true);
+                                    }
+                                  }}
+                                >
                                   {row?.vehiclePrice?.toLocaleString() || 0}
                                 </TableCell>
-                                <TableCell align="left">
+                                <TableCell
+                                  align="left"
+                                  onClick={() => {
+                                    console.log("View vehical");
+                                    if (userType() === "customer") {
+                                      setOrderDetails(row);
+                                      setViewOrdersModal(true);
+                                    }
+                                  }}
+                                >
                                   {row?.createdAt.split("T")[0] || 0}
                                 </TableCell>
                               </>
@@ -1381,7 +1545,7 @@ const ViewOrders = ({ hideStatus }) => {
                                 >
                                   <Eye color="#a905b6" />
                                 </ActionIcon>
-                                {userType() === "customer" && (
+                                {/* {userType() === "customer" && (
                                   <ActionIcon
                                     color="dark"
                                     variant="transparent"
@@ -1420,7 +1584,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   >
                                     <BrandStripe />
                                   </ActionIcon>
-                                )}
+                                )} */}
                                 {userType() === "admin" && (
                                   <ActionIcon
                                     disabled={row?.status !== "dp_paid"}
