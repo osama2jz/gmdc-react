@@ -9,6 +9,7 @@ import {
 import loc from "../../assets/location.svg";
 import email from "../../assets/email.svg";
 import phone from "../../assets/phone.svg";
+import logo from "../../assets/logo.svg";
 
 export default function footer() {
   return (
@@ -20,7 +21,7 @@ export default function footer() {
           <MDBRow className="mt-3">
             <MDBCol className="mx-auto mb-4 desp">
               <h6 className="text-uppercase fw-bold mb-4">
-                <MDBIcon icon="gem" className="me-3" />
+              <img src={logo} width="88px" height="40px" alt="logo" />
                 Get My Dream Car
               </h6>
               <p style={{ textAlign: "justify" }}>

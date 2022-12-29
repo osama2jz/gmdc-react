@@ -3,7 +3,7 @@ import { withTranslation } from "react-i18next";
 import { Navigate } from "react-router-dom";
 import routeNames from "../../routes/routeNames";
 import Button from "../Button";
-// import logo from "../../assets/logo.svg";
+import logo from "../../assets/logo.svg";
 
 import "./styles.scss";
 
@@ -29,8 +29,7 @@ console.log("isLoggedIn", isLoggedIn, localStorage.getItem("userData"))
           style={{ height: show ? "300px" : "70px" }}
         >
           <a className="navbar-brand" href="/">
-            GMDC
-            {/* <img src={logo} width="88px" height="80px" alt="logo" /> */}
+            <img src={logo} width="88px" height="80px" alt="logo" />
           </a>
           <button
             className="navbar-toggler"
