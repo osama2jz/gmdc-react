@@ -550,7 +550,7 @@ const AddOrder = ({ setCurrentLocation }) => {
     let remainingPrice = form.values.totalPrice - form.values.downPayment;
 
     form.setFieldValue("remainingPayment", remainingPrice);
-    let installments = remainingPrice/72;
+    let installments = remainingPrice/60;
     form.setFieldValue("installments", installments);
   }, [form.values.downPayment, form.values.totalPrice]);
   useEffect(() => {

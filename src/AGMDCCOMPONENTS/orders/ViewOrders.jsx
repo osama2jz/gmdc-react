@@ -160,6 +160,13 @@ const ViewOrders = ({ hideStatus }) => {
         id: "status",
         numeric: false,
         disablePadding: false,
+        label: "Monthly Installments",
+        sort: true,
+      },
+      {
+        id: "status",
+        numeric: false,
+        disablePadding: false,
         label: "Order Status",
         sort: true,
       },
@@ -316,6 +323,13 @@ const ViewOrders = ({ hideStatus }) => {
         disablePadding: false,
         label: "Remaining Amount",
         sort: false,
+      },
+      {
+        id: "remainingAmount",
+        numeric: false,
+        disablePadding: false,
+        label: "Monthly Installments",
+        sort: true,
       },
       {
         id: "status",
@@ -562,7 +576,6 @@ const ViewOrders = ({ hideStatus }) => {
       );
     }
   };
-
   const updateStatus = async (id, status) => {
     setVisible(true);
     const body = {
@@ -1078,6 +1091,8 @@ const ViewOrders = ({ hideStatus }) => {
                         page * rowsPerPage + rowsPerPage
                       )
                       ?.map((row, index) => {
+                        console.log("row data", row);
+
                         return (
                           <TableRow key={index}>
                             <TableCell
@@ -1164,31 +1179,9 @@ const ViewOrders = ({ hideStatus }) => {
                                 >
                                   {row?.totalPrice?.toLocaleString()}
                                 </TableCell>
-                                <TableCell
-                                  align="left"
-                                  onClick={() => {
-                                    console.log("View vehical");
-                                    if (userType() === "customer") {
-                                      setOrderDetails(row);
-                                      setViewOrdersModal(true);
-                                    }
-                                  }}
-                                >
+                                <TableCell align="left">
                                   {row?.downPayment?.toLocaleString()}
-                                </TableCell>
-
-                                <TableCell
-                                  align="left"
-                                  // onClick={() => {
-                                  //   console.log("View vehical");
-                                  //   if (userType() === "customer") {
-                                  //     setOrderDetails(row);
-                                  //     setViewOrdersModal(true);
-                                  //   }
-                                  // }}
-                                >
-                                  {row?.remainingPayment?.toLocaleString()}
-                                  {userType() === "customer" && (
+                                  {row?.status == "new" ? (
                                     <Button
                                       size="xs"
                                       m={"3px"}
@@ -1230,46 +1223,68 @@ const ViewOrders = ({ hideStatus }) => {
                                     >
                                       Pay Now
                                     </Button>
-                                    // <ActionIcon
-                                    //   color="dark"
-                                    //   variant="transparent"
-                                    //   onClick={async () => {
-                                    //     console.log("LAUNCHING PAYMENT");
-                                    //     try {
-                                    //       let apiResponse = await axiosPost(
-                                    //         "/payment/payment-intent",
-                                    //         {
-                                    //           orderId: row?._id,
-                                    //         }
-                                    //       );
-                                    //       console.log(
-                                    //         "API RESPONSE",
-                                    //         apiResponse
-                                    //       );
-                                    //       if (apiResponse === null) {
-                                    //         showNotification({
-                                    //           title: "Already paid",
-                                    //           message:
-                                    //             "This order has already been paid",
-                                    //           color: "yellow",
-                                    //         });
-                                    //       } else {
-                                    //         setClientSecret(
-                                    //           apiResponse.data.data
-                                    //             .client_secret
-                                    //         );
-                                    //       }
-                                    //     } catch (e) {
-                                    //       console.log("error");
-                                    //     }
-                                    //     // setViewOrdersModal(false);
-                                    //     setViewPaymentModal(true);
-                                    //     setAmountPayable(row);
-                                    //   }}
-                                    // >
-                                    //   <BrandStripe />
-                                    // </ActionIcon>
+                                  ) : (
+                                    <Button
+                                      size="xs"
+                                      m={"3px"}
+                                      compact
+                                      color="blue"
+                                      disabled
+                                    >
+                                      Paid
+                                    </Button>
                                   )}
+                                </TableCell>
+
+                                <TableCell align="left">
+                                  {row?.remainingPayment?.toLocaleString()}
+                                </TableCell>
+                                <TableCell align="left">
+                                  {row?.remainingPayment / 60}
+                                  {userType() === "customer" &&
+                                    row?.status !== "new" && (
+                                      <Button
+                                        size="xs"
+                                        m={"3px"}
+                                        compact
+                                        color="blue"
+                                        onClick={async () => {
+                                          console.log("LAUNCHING PAYMENT");
+                                          try {
+                                            let apiResponse = await axiosPost(
+                                              "/payment/payment-intent",
+                                              {
+                                                orderId: row?._id,
+                                              }
+                                            );
+                                            console.log(
+                                              "API RESPONSE",
+                                              apiResponse
+                                            );
+                                            if (apiResponse === null) {
+                                              showNotification({
+                                                title: "Already paid",
+                                                message:
+                                                  "This order has already been paid",
+                                                color: "yellow",
+                                              });
+                                            } else {
+                                              setClientSecret(
+                                                apiResponse.data.data
+                                                  .client_secret
+                                              );
+                                            }
+                                          } catch (e) {
+                                            console.log("error");
+                                          }
+                                          // setViewOrdersModal(false);
+                                          setViewPaymentModal(true);
+                                          setAmountPayable(row);
+                                        }}
+                                      >
+                                        Pay Now
+                                      </Button>
+                                    )}
                                 </TableCell>
                               </>
                             )}
