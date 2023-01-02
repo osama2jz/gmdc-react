@@ -22,16 +22,16 @@ export default function footer() {
             <MDBCol className="mx-auto mb-4 desp">
               <h6 className="text-uppercase fw-bold mb-4">
               <img src={logo} width="88px" height="40px" alt="logo" />
-                Get My Dream Car
+                Get My Dream Ride
               </h6>
               <p style={{ textAlign: "justify" }}>
-                Get My Dream Car (GMDC) Inc is dedicated to providing you with
-                the ultimate automobile buying experience. Get My Dream Car
-                (GMDC) Inc is your #1 source for buying a quality pre-owned
+                Get My Dream Ride (GMDR) Inc is dedicated to providing you with
+                the ultimate automobile buying experience. Get My Dream Ride
+                (GMDR) Inc is your #1 source for buying a quality pre-owned
                 vehicle. We have extensive relationships in the dealer community
                 allowing us to purchase a wide variety of lease returns and new
-                car trades at exceptional values. This enables Get My Dream Car
-                (GMDC) to pass along huge savings on the highest quality
+                car trades at exceptional values. This enables Get My Dream Ride
+                (GMDR) to pass along huge savings on the highest quality
                 vehicles of your choice. In addition, we offer a full array of
                 financing options to meet your needs.
               </p>
@@ -86,7 +86,7 @@ export default function footer() {
       >
         © 2022 Copyright:
         <a className="text-reset fw-bold m-2" href="/">
-          Get My Dream Car
+          Get My Dream Ride
         </a>
       </div>
     </MDBFooter>
