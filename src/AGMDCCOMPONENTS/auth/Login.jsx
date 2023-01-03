@@ -304,7 +304,7 @@ const Login = ({ email, password }) => {
                 justify={"center"}
                 style={{ height: "100%", width: "100%" }}
               >
-                <Title align="center">Welcome to Get My Dream Car</Title>
+                <Title align="center">Welcome to Get My Dream Ride</Title>
                 <Text align="center">
                   A perfect place to find your dream car!
                 </Text>
