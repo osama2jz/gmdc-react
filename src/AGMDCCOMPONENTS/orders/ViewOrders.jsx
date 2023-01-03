@@ -1240,7 +1240,7 @@ const ViewOrders = ({ hideStatus }) => {
                                   {row?.remainingPayment?.toLocaleString()}
                                 </TableCell>
                                 <TableCell align="left">
-                                  {row?.remainingPayment / 60}
+                                  {row?.installments || row?.remainingPayment / 60}
                                   {userType() === "customer" &&
                                     row?.status !== "new" && (
                                       <Button
